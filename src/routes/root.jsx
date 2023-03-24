@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink, Link } from "react-router-dom";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -19,7 +19,7 @@ export default function Root() {
       <div id="detail">
         <Grid container spacing={2} columns={12}>
           <Grid xs={4.5}></Grid>
-          <Grid xs={1} sx={{ paddingTop: 4 }}>
+          <Grid xs={1} sx={{ paddingTop: 1 }}>
             <Link
               style={{
                 textDecoration: "None",
@@ -30,8 +30,8 @@ export default function Root() {
               Portfolio
             </Link>
           </Grid>
-          <Grid xs={1} sx={{ paddingTop: 4 }}>
-            <Link
+          <Grid xs={1} sx={{ paddingTop: 1 }}>
+            <NavLink
               style={{
                 textDecoration: "None",
                 color: "black",
@@ -39,9 +39,9 @@ export default function Root() {
               to={`/projects`}
             >
               Projects
-            </Link>
+            </NavLink>
           </Grid>
-          <Grid xs={1} sx={{ paddingTop: 4 }}>
+          <Grid xs={1} sx={{ paddingTop: 1 }}>
             <Link
               style={{
                 textDecoration: "None",
