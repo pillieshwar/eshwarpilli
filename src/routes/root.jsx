@@ -15,6 +15,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Outlet, NavLink, Link } from "react-router-dom";
+import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 
 const drawerWidth = 240;
 const navItems = ["Projects", "Blogs"];
@@ -29,6 +30,7 @@ function Root(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+      <ModeEditOutlineOutlinedIcon color="white" />
       <Typography variant="h6" sx={{ my: 2 }}>
         Eshwar Nag Pilli
       </Typography>
@@ -100,7 +102,7 @@ function Root(props) {
               }}
               to={`/`}
             >
-              Eshwar Nag Pilli
+              <ModeEditOutlineOutlinedIcon color="white" /> Eshwar Nag Pilli
             </Link>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "flex" } }}>

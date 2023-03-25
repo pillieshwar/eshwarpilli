@@ -8,7 +8,8 @@ import Root from "./routes/root";
 import ErrorPage from "./error-page";
 import Projects from "./routes/projects";
 import Index from "./routes/index";
-
+import LiveProjects from "./routes/liveProjects";
+import Contact, { loader as contactLoader } from "./routes/liveProjects";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +20,11 @@ const router = createBrowserRouter([
       {
         path: "projects",
         element: <Projects />,
+      },
+      {
+        path: "live-projects/:projectName",
+        element: <LiveProjects />,
+        loader: contactLoader,
       },
     ],
   },
