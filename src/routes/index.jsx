@@ -11,6 +11,11 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import EshwarNagPilli from "./../images/Eshwar_Nag_Pilli.jpeg";
 import Terodoc_Statement_of_Purpose from "./../images/Terodoc_Statement_of_Purpose.png";
+import AMAZON from "./../images/amazon.png";
+import WSU from "./../images/wsu.png";
+import MIT from "./../images/mit.png";
+import DRDO from "./../images/drdo.png";
+import CYBAGE from "./../images/cybage.jpeg";
 import { Link } from "react-router-dom";
 import Badge from "@mui/material/Badge";
 import SALESTAT_LOGO from "./../images/SALESTAT_LOGO.svg";
@@ -46,6 +51,25 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     },
   },
 }));
+
+const skills = [
+  "Python",
+  "Typescript",
+  "Java",
+  "ReactJs",
+  "SQL",
+  "Linux",
+  "Web Development",
+  "HTML/CSS",
+  "Javascript",
+  "Python",
+  "Typescript",
+
+  "Web Development",
+  "HTML/CSS",
+  "Javascript",
+];
+
 const StyledBadgeFail = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     backgroundColor: "red",
@@ -92,6 +116,93 @@ export default function Index() {
       "/live-projects/salestat",
     ],
   ];
+
+  const steppingStones = [
+    [
+      Terodoc_Statement_of_Purpose,
+      "PlayQuote",
+      "https://terodoc.com/",
+      "A platform that provides a comprehensive library of Statement of Purpose that have been approved and accepted by universities. It offers a user-friendly interface for accessing and customizing SOPs, ensuring that they meet the specific needs of each institution.",
+      "/live-projects/terodoc-statement-of-purpose",
+    ],
+    [
+      SALESTAT_LOGO,
+      "Blockcert",
+      "https://terodoc.com/",
+      "SaleStat is a software product which helps the medical company to analyse their sales in a graphical view and get a clear picture of their monthly and yearly sales status",
+      "/live-projects/salestat",
+    ],
+  ];
+
+  const workExperience = [
+    [
+      AMAZON,
+      "January 2023 - Present",
+      "Software Development Engineer",
+      "Amazon Inc.",
+      "Seattle, Washington.",
+    ],
+    [
+      WSU,
+      "September 2022 - December 2022",
+      "Teaching Assistant",
+      "Washington State University",
+      "Pullman, Washington.",
+    ],
+    [
+      AMAZON,
+      "May 2022 - August 2022",
+      "Software Development Engineer Intern",
+      "Amazon Inc. (AWS)",
+      "Seattle, Washington.",
+    ],
+    [
+      WSU,
+      "November 2021 - April 2022",
+      "Graduate Developer",
+      "Biological Systems Engineering (WSU)",
+      "Pullman, Washington.",
+    ],
+    [
+      WSU,
+      "January 2021 - October 2021",
+      "Graduate Student Developer",
+      "Smart Grid Demonstration and Research Investigation Lab (WSU)",
+      "Pullman, Washington.",
+    ],
+    [
+      CYBAGE,
+      "July 2018 - December 2020",
+      "Software Developer",
+      "Cybage Software",
+      "Hyderabad, India.",
+    ],
+    [
+      DRDO,
+      "June 2017 - May 2018",
+      "Research Intern",
+      "Defense Research and Development Organisation",
+      "Pune, India.",
+    ],
+  ];
+
+  const education = [
+    [
+      WSU,
+      "January 2021 - December 2022",
+      "Master of Science in Computer Science",
+      "Washington State University",
+      "Pullman, Washington.",
+    ],
+    [
+      MIT,
+      "August 2014 - June 2018",
+      "Bachelor of Engineering in Computer Science",
+      "Maharashtra Institute of Technology",
+      "Pune, India.",
+    ],
+  ];
+
   return (
     <Box sx={{ flexGrow: 1 }} pt={10}>
       <Grid container spacing={5}>
@@ -117,8 +228,8 @@ export default function Index() {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small">Share</Button>
-              <Button size="small">Learn More</Button>
+              {/* <Button size="small">Share</Button>
+              <Button size="small">Learn More</Button> */}
             </CardActions>
           </Card>
         </Grid>
@@ -200,7 +311,7 @@ export default function Index() {
               />
             </Grid>
           </Grid>
-          {infoStack.map((data) => (
+          {steppingStones.map((data) => (
             <Grid container spacing={2}>
               <Grid xs={12} md={2} sx={{ float: "right" }}>
                 <div class="box">
@@ -245,6 +356,134 @@ export default function Index() {
               </Grid>
             </Grid>
           ))}
+          <hr></hr>
+          <Grid container>
+            <Grid item xs={12} textAlign="center">
+              <Typography
+                sx={{ fontSize: 20 }}
+                gutterBottom
+                variant="button"
+                component="div"
+              >
+                Skills
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              {skills.map((skill) => (
+                <Chip sx={{ m: 1 }} label={skill} size="medium" />
+              ))}
+            </Grid>
+          </Grid>
+          <hr></hr>
+          <Grid container>
+            <Grid item xs={12} textAlign="center">
+              <Typography
+                sx={{ fontSize: 20 }}
+                gutterBottom
+                variant="button"
+                component="div"
+              >
+                Blogs
+              </Typography>
+            </Grid>
+            <Grid item xs={12}></Grid>
+          </Grid>
+          <hr></hr>
+          <Grid container>
+            <Grid item xs={12} textAlign="center">
+              <Typography
+                sx={{ fontSize: 20 }}
+                gutterBottom
+                variant="button"
+                component="div"
+              >
+                Work Experience
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              {workExperience.map((data) => (
+                <Grid container spacing={2}>
+                  <Grid xs={12} md={2} sx={{ float: "right" }}>
+                    <div class="box">
+                      <img
+                        style={{ float: "right" }}
+                        height={"100vh"}
+                        src={data[0]}
+                        alt="Find Statement of Purpose examples and get your statement of purpose reviewed"
+                      />
+                    </div>
+                  </Grid>
+
+                  <Grid xs={12} md={10}>
+                    <Typography
+                      gutterBottom
+                      variant="body2"
+                      component="text.secondary"
+                    >
+                      {data[1]}
+                    </Typography>
+                    <Typography gutterBottom variant="h6" component="div">
+                      {data[2]}
+                    </Typography>
+                    <Typography variant="body1" color="div">
+                      {data[3]}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {data[4]}
+                    </Typography>
+                  </Grid>
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+          <hr></hr>
+          <Grid container>
+            <Grid item xs={12} textAlign="center">
+              <Typography
+                sx={{ fontSize: 20 }}
+                gutterBottom
+                variant="button"
+                component="div"
+              >
+                Education
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              {education.map((data) => (
+                <Grid container spacing={2}>
+                  <Grid xs={12} md={2} sx={{ float: "right" }}>
+                    <div class="box">
+                      <img
+                        style={{ float: "right" }}
+                        height={"100vh"}
+                        src={data[0]}
+                        alt="Find Statement of Purpose examples and get your statement of purpose reviewed"
+                      />
+                    </div>
+                  </Grid>
+
+                  <Grid xs={12} md={10}>
+                    <Typography
+                      gutterBottom
+                      variant="body2"
+                      component="text.secondary"
+                    >
+                      {data[1]}
+                    </Typography>
+                    <Typography gutterBottom variant="h6" component="div">
+                      {data[2]}
+                    </Typography>
+                    <Typography variant="body1" color="div">
+                      {data[3]}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {data[4]}
+                    </Typography>
+                  </Grid>
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Box>
