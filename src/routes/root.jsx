@@ -18,7 +18,7 @@ import { Outlet, NavLink, Link } from "react-router-dom";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 
 const drawerWidth = 240;
-const navItems = ["Projects", "Blogs"];
+const navItems = ["projects", "blogs"];
 
 function Root(props) {
   const { window } = props;
