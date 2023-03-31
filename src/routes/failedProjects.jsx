@@ -12,8 +12,8 @@ import liveProjectDataJson from "./../jsonData/liveProjectData.json";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
-    backgroundColor: "#44b700",
-    color: "#44b700",
+    backgroundColor: "red",
+    color: "red",
     marginRight: 7,
     boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
     "&::after": {
@@ -44,7 +44,7 @@ export async function loader({ params }) {
   const liveProjectData = params.projectName;
   return { liveProjectData };
 }
-export default function LiveProjects() {
+export default function FailedProjects() {
   const { liveProjectData } = useLoaderData();
   const windowSize = useRef([window.innerWidth, window.innerHeight]);
 
@@ -55,6 +55,7 @@ export default function LiveProjects() {
       console.log(arr);
     }
   });
+
   const nstr = arr[0].desc;
 
   return (
@@ -72,7 +73,7 @@ export default function LiveProjects() {
                   variant="dot"
                 ></StyledBadge>
               }
-              label=" LIVE PROJECTS"
+              label=" FAILED PROJECTS"
             />
           </Grid>
           <Grid container>
@@ -166,6 +167,7 @@ export default function LiveProjects() {
             </Grid>
             <Grid xs={12} pt={5}>
               <div style={{ whiteSpace: "pre-wrap" }}>{nstr}</div>
+
               {/* <Typography
                 variant="body1"
                 color="text.secondary"

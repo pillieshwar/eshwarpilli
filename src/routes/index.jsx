@@ -9,16 +9,18 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import EshwarNagPilli from "./../images/Eshwar_Nag_Pilli.jpeg";
+import EshwarNagPilli from "./../images/Eshwar_Nag_Pilli.png";
 import Terodoc_Statement_of_Purpose from "./../images/Terodoc_Statement_of_Purpose.png";
 import AMAZON from "./../images/amazon.png";
 import WSU from "./../images/wsu.png";
 import MIT from "./../images/mit.png";
 import DRDO from "./../images/drdo.png";
+import FILLERIMG from "./../images/fillerImg.png";
 import CYBAGE from "./../images/cybage.jpeg";
 import { Link } from "react-router-dom";
 import Badge from "@mui/material/Badge";
-import SALESTAT_LOGO from "./../images/SALESTAT_LOGO.svg";
+import SALESTAT_LOGO from "./../images/SALESTAT_LOGO.png";
+import PLAYQUOTE_LOGO from "./../images/PlayQuote_Logo.png";
 import Chip from "@mui/material/Chip";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
@@ -108,29 +110,29 @@ export default function Index() {
       "A platform that provides a comprehensive library of Statement of Purpose that have been approved and accepted by universities. It offers a user-friendly interface for accessing and customizing SOPs, ensuring that they meet the specific needs of each institution.",
       "/live-projects/terodoc-statement-of-purpose",
     ],
-    [
-      SALESTAT_LOGO,
-      "Salestat",
-      "https://terodoc.com/",
-      "SaleStat is a software product which helps the medical company to analyse their sales in a graphical view and get a clear picture of their monthly and yearly sales status",
-      "/live-projects/salestat",
-    ],
   ];
 
   const steppingStones = [
     [
-      Terodoc_Statement_of_Purpose,
-      "PlayQuote",
+      SALESTAT_LOGO,
+      "Salestat",
       "https://terodoc.com/",
-      "A platform that provides a comprehensive library of Statement of Purpose that have been approved and accepted by universities. It offers a user-friendly interface for accessing and customizing SOPs, ensuring that they meet the specific needs of each institution.",
-      "/live-projects/terodoc-statement-of-purpose",
+      "SaleStat is a software product which helps the medical company to analyse their sales in a graphical view and get a clear picture of their monthly and yearly sales status.",
+      "/failed-projects/salestat",
     ],
     [
-      SALESTAT_LOGO,
+      PLAYQUOTE_LOGO,
+      "PlayQuote",
+      "https://y5htjzc44h524qdggongomi4ret3cochxn37dmg62clyqilcszaa.arweave.net/x0805Fzh-65AZjOaZzEciSexOEe7d_Gw3tCXiCFilkA",
+      "PlayQuote is a permaweb dapp for storing Quotes on blockchain in a Decentralized way. Powered by Arweave, all quotes are forever stored and accessible anywhere.",
+      "/failed-projects/playquote",
+    ],
+    [
+      FILLERIMG,
       "Blockcert",
       "https://terodoc.com/",
-      "SaleStat is a software product which helps the medical company to analyse their sales in a graphical view and get a clear picture of their monthly and yearly sales status",
-      "/live-projects/salestat",
+      "Blockchain based DAPP(Decentalized Application) for certifying other Dapps. A permanent certificate on the Arweave permaweb blockchain",
+      "/failed-projects/blockcert",
     ],
   ];
 
@@ -374,7 +376,7 @@ export default function Index() {
               ))}
             </Grid>
           </Grid>
-          <hr></hr>
+          {/* <hr></hr>
           <Grid container>
             <Grid item xs={12} textAlign="center">
               <Typography
@@ -387,7 +389,7 @@ export default function Index() {
               </Typography>
             </Grid>
             <Grid item xs={12}></Grid>
-          </Grid>
+          </Grid> */}
           <hr></hr>
           <Grid container>
             <Grid item xs={12} textAlign="center">

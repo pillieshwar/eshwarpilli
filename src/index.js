@@ -9,6 +9,7 @@ import ErrorPage from "./error-page";
 import Projects from "./routes/projects";
 import Index from "./routes/index";
 import LiveProjects from "./routes/liveProjects";
+import FailedProjects from "./routes/failedProjects";
 import Contact, { loader as contactLoader } from "./routes/liveProjects";
 const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
       {
         path: "live-projects/:projectName",
         element: <LiveProjects />,
+        loader: contactLoader,
+      },
+      {
+        path: "failed-projects/:projectName",
+        element: <FailedProjects />,
         loader: contactLoader,
       },
     ],
