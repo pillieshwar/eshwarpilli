@@ -18,7 +18,7 @@ import { Outlet, NavLink, Link } from "react-router-dom";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 
 const drawerWidth = 240;
-const navItems = ["projects", "blogs"];
+const navItems = ["blogs"];
 
 function Root(props) {
   const { window } = props;
@@ -30,23 +30,36 @@ function Root(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", pt: 2 }}>
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 1, mb: 2 }}>
-        <ModeEditOutlineOutlinedIcon sx={{ color: "#000", fontSize: "1.5rem" }} />
-        <Typography variant="h6" sx={{ color: "#000", fontSize: "1.1rem", fontWeight: 600 }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 1,
+          mb: 2,
+        }}
+      >
+        <ModeEditOutlineOutlinedIcon
+          sx={{ color: "#000", fontSize: "1.5rem" }}
+        />
+        <Typography
+          variant="h6"
+          sx={{ color: "#000", fontSize: "1.1rem", fontWeight: 600 }}
+        >
           Eshwar Nag Pilli
         </Typography>
       </Box>
       <Divider sx={{ mb: 1 }} />
       <List sx={{ px: 1 }}>
         <ListItem key="homeHam" disablePadding>
-          <ListItemButton 
-            sx={{ 
-              textAlign: "center", 
+          <ListItemButton
+            sx={{
+              textAlign: "center",
               borderRadius: 1,
               mb: 0.5,
               "&:hover": {
-                backgroundColor: "#e3e3e3"
-              }
+                backgroundColor: "#e3e3e3",
+              },
             }}
           >
             <ListItemText>
@@ -55,7 +68,7 @@ function Root(props) {
                   textDecoration: "None",
                   color: "#000",
                   fontSize: "1rem",
-                  fontWeight: 500
+                  fontWeight: 500,
                 }}
                 to={`/`}
               >
@@ -66,14 +79,14 @@ function Root(props) {
         </ListItem>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton 
-              sx={{ 
-                textAlign: "center", 
+            <ListItemButton
+              sx={{
+                textAlign: "center",
                 borderRadius: 1,
                 mb: 0.5,
                 "&:hover": {
-                  backgroundColor: "#e3e3e3"
-                }
+                  backgroundColor: "#e3e3e3",
+                },
               }}
             >
               <ListItemText>
@@ -83,7 +96,7 @@ function Root(props) {
                     textDecoration: "None",
                     color: "#000",
                     fontSize: "1rem",
-                    fontWeight: 500
+                    fontWeight: 500,
                   }}
                   to={`/` + item}
                 >
@@ -103,8 +116,8 @@ function Root(props) {
   return (
     <Box sx={{ display: "flex", minHeight: "100vh" }}>
       <CssBaseline />
-      <AppBar 
-        style={{ backgroundColor: "#000" }} 
+      <AppBar
+        style={{ backgroundColor: "#000" }}
         component="nav"
         sx={{
           position: "fixed",
@@ -127,10 +140,10 @@ function Root(props) {
           <Typography
             variant="h6"
             component="div"
-            sx={{ 
-              flexGrow: 1, 
+            sx={{
+              flexGrow: 1,
               display: { xs: "none", sm: "block" },
-              fontSize: { xs: "1rem", sm: "1.25rem" }
+              fontSize: { xs: "1rem", sm: "1.25rem" },
             }}
           >
             <Link
@@ -139,16 +152,21 @@ function Root(props) {
                 color: "#fff",
                 display: "flex",
                 alignItems: "center",
-                gap: "0.5rem"
+                gap: "0.5rem",
               }}
               to={`/`}
             >
-              <ModeEditOutlineOutlinedIcon sx={{ fontSize: { xs: "1.2rem", sm: "1.5rem" } }} />
+              <ModeEditOutlineOutlinedIcon
+                sx={{ fontSize: { xs: "1.2rem", sm: "1.5rem" } }}
+              />
               <span style={{ fontSize: "inherit" }}>Eshwar Nag Pilli</span>
             </Link>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "flex" }, gap: 1 }}>
-            <Button key="Home" sx={{ color: "#fff", fontSize: { sm: "0.875rem", md: "1rem" } }}>
+            <Button
+              key="Home"
+              sx={{ color: "#fff", fontSize: { sm: "0.875rem", md: "1rem" } }}
+            >
               <Link
                 style={{
                   textDecoration: "None",
@@ -160,7 +178,10 @@ function Root(props) {
               </Link>
             </Button>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff", fontSize: { sm: "0.875rem", md: "1rem" } }}>
+              <Button
+                key={item}
+                sx={{ color: "#fff", fontSize: { sm: "0.875rem", md: "1rem" } }}
+              >
                 <NavLink
                   key={item}
                   style={{
@@ -197,14 +218,14 @@ function Root(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box 
-        component="main" 
-        sx={{ 
-          flexGrow: 1, 
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
           width: "100%",
           mt: { xs: 7, sm: 8 }, // Account for AppBar height
           px: { xs: 1, sm: 2, md: 3 },
-          pb: 3
+          pb: 3,
         }}
       >
         <Outlet />

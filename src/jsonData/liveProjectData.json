@@ -1,4 +1,14 @@
 {
+  "memoryvault": {
+    "title": "Our Experiences",
+    "launchDate": "7 September 2024",
+    "category": "Digital Preservation",
+    "targetAudience": "Families, storytellers, creators, and anyone looking to preserve memories",
+    "websiteLink": "https://memoryvault.vercel.app/",
+    "impact": "Provides a permanent way to secure and access personal memories and stories using QR codes linked to blockchain, ensuring they last a lifetime.",
+    "desc": "Our Experiences is a platform that allows people to preserve their most meaningful moments—photos, stories, and messages—forever. Each memory is securely stored using blockchain technology and linked to a unique QR code, making it easily accessible across generations. Whether it’s a milestone, a personal journey, or a family legacy, Our Experiences ensures these memories are tamper-proof, timeless, and always just a scan away. By combining accessibility with cutting-edge digital preservation, we make it possible for people to share and revisit their stories in the most reliable way.",
+    "frontImage": "2"
+  },
   "terodoc-statement-of-purpose": {
     "title": "Terodoc",
     "launchDate": "10 December 2022",

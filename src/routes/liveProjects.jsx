@@ -8,6 +8,7 @@ import * as React from "react";
 import { useRef } from "react";
 import { useLoaderData } from "react-router-dom";
 import StatementofPurposeDashboardImg from "./../images/dashboard.png";
+import memoryvaultImg from "./../images/memoryvault.png";
 import liveProjectDataJson from "./../jsonData/liveProjectData.json";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -64,9 +65,9 @@ export default function LiveProjects() {
           <Box sx={{ mb: { xs: 3, md: 0 } }}>
             <Grid xs={12} textAlign="center" sx={{ mb: 2 }}>
               <Chip
-                sx={{ 
+                sx={{
                   paddingLeft: 2.5,
-                  fontSize: { xs: "0.75rem", sm: "0.875rem" }
+                  fontSize: { xs: "0.75rem", sm: "0.875rem" },
                 }}
                 variant="outlined"
                 icon={
@@ -82,10 +83,10 @@ export default function LiveProjects() {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <Typography
-                  sx={{ 
+                  sx={{
                     fontSize: { xs: 16, sm: 18, md: 20 },
                     fontWeight: 600,
-                    mb: 2
+                    mb: 2,
                   }}
                   gutterBottom
                   variant="button"
@@ -95,49 +96,47 @@ export default function LiveProjects() {
                 </Typography>
               </Grid>
               <Grid item xs={12}>
-                <Box sx={{ 
-                  p: 2, 
-                  backgroundColor: "#f5f5f5", 
-                  borderRadius: 2,
-                  mb: 2
-                }}>
+                <Box
+                  sx={{
+                    p: 2,
+                    backgroundColor: "#f5f5f5",
+                    borderRadius: 2,
+                    mb: 2,
+                  }}
+                >
                   <Typography
                     gutterBottom
                     variant="body2"
                     color="text.secondary"
-                    sx={{ 
+                    sx={{
                       fontSize: { xs: "0.8rem", sm: "0.9rem" },
                       fontWeight: 600,
-                      mb: 1
+                      mb: 1,
                     }}
                   >
                     Launch Date:{" "}
-                    <span style={{ fontWeight: 400 }}>
-                      {arr[0].launchDate}
-                    </span>
+                    <span style={{ fontWeight: 400 }}>{arr[0].launchDate}</span>
                   </Typography>
                   <Typography
                     gutterBottom
                     variant="body2"
                     color="text.secondary"
-                    sx={{ 
+                    sx={{
                       fontSize: { xs: "0.8rem", sm: "0.9rem" },
                       fontWeight: 600,
-                      mb: 1
+                      mb: 1,
                     }}
                   >
                     Category:{" "}
-                    <span style={{ fontWeight: 400 }}>
-                      {arr[0].category}
-                    </span>
+                    <span style={{ fontWeight: 400 }}>{arr[0].category}</span>
                   </Typography>
                   <Typography
                     variant="body2"
                     color="text.secondary"
-                    sx={{ 
+                    sx={{
                       fontSize: { xs: "0.8rem", sm: "0.9rem" },
                       fontWeight: 600,
-                      mb: 1
+                      mb: 1,
                     }}
                   >
                     Target Audience:{" "}
@@ -149,10 +148,10 @@ export default function LiveProjects() {
                     gutterBottom
                     variant="body2"
                     color="text.secondary"
-                    sx={{ 
+                    sx={{
                       fontSize: { xs: "0.8rem", sm: "0.9rem" },
                       fontWeight: 600,
-                      mb: 1
+                      mb: 1,
                     }}
                   >
                     Website:{" "}
@@ -163,9 +162,9 @@ export default function LiveProjects() {
                   <Typography
                     variant="body2"
                     color="text.secondary"
-                    sx={{ 
+                    sx={{
                       fontSize: { xs: "0.8rem", sm: "0.9rem" },
-                      fontWeight: 600
+                      fontWeight: 600,
                     }}
                   >
                     Impact:{" "}
@@ -180,10 +179,10 @@ export default function LiveProjects() {
           <Grid container spacing={{ xs: 2, sm: 3 }}>
             <Grid item xs={12} textAlign="center">
               <Typography
-                sx={{ 
+                sx={{
                   fontSize: { xs: 18, sm: 20, md: 24 },
                   fontWeight: 600,
-                  mb: 2
+                  mb: 2,
                 }}
                 gutterBottom
                 variant="h4"
@@ -194,34 +193,60 @@ export default function LiveProjects() {
             </Grid>
             <Grid xs={12}>
               {arr[0].frontImage === "1" ? (
-                <Box sx={{ 
-                  width: "100%", 
-                  maxWidth: "100%",
-                  overflow: "hidden",
-                  borderRadius: 2,
-                  boxShadow: 2
-                }}>
-                  <img 
-                    src={StatementofPurposeDashboardImg} 
+                <Box
+                  sx={{
+                    width: "100%",
+                    maxWidth: "100%",
+                    overflow: "hidden",
+                    borderRadius: 2,
+                    boxShadow: 2,
+                  }}
+                >
+                  <img
+                    src={StatementofPurposeDashboardImg}
                     alt="Project dashboard"
-                    style={{ 
-                      width: "100%", 
+                    style={{
+                      width: "100%",
                       height: "auto",
-                      display: "block"
+                      display: "block",
+                    }}
+                  />
+                </Box>
+              ) : arr[0].frontImage === "2" ? (
+                <Box
+                  sx={{
+                    width: "100%",
+                    maxWidth: "100%",
+                    overflow: "hidden",
+                    borderRadius: 2,
+                    boxShadow: 2,
+                  }}
+                >
+                  <img
+                    src={memoryvaultImg}
+                    alt="Project dashboard"
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      display: "block",
                     }}
                   />
                 </Box>
               ) : (
-                <Box sx={{ 
-                  width: "100%", 
-                  height: "200px",
-                  backgroundColor: "#f5f5f5",
-                  borderRadius: 2,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}>
-                  <Typography color="text.secondary">No image available</Typography>
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "200px",
+                    backgroundColor: "#f5f5f5",
+                    borderRadius: 2,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Typography color="text.secondary">
+                    No image available
+                  </Typography>
                 </Box>
               )}
             </Grid>
@@ -229,10 +254,10 @@ export default function LiveProjects() {
               <Typography
                 variant="body1"
                 color="text.secondary"
-                sx={{ 
+                sx={{
                   fontSize: { xs: "0.9rem", sm: "1rem" },
                   lineHeight: 1.7,
-                  whiteSpace: "pre-wrap"
+                  whiteSpace: "pre-wrap",
                 }}
               >
                 {nstr}

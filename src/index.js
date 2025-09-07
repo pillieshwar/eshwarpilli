@@ -11,6 +11,7 @@ import Index from "./routes/index";
 import LiveProjects from "./routes/liveProjects";
 import FailedProjects from "./routes/failedProjects";
 import Contact, { loader as contactLoader } from "./routes/liveProjects";
+import Blogs from "./routes/blogs";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,8 +20,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Index /> },
       {
-        path: "projects",
-        element: <Projects />,
+        path: "blogs",
+        element: <Blogs />,
       },
       {
         path: "live-projects/:projectName",
