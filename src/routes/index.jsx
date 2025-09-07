@@ -229,8 +229,11 @@ export default function Index() {
           >
             <CardMedia
               sx={{
+                alignSelf: "center",
                 height: { xs: 300, sm: 350, md: 400 },
                 objectFit: "cover",
+                width: "80%",
+                mt: { xs: 2, sm: 3, md: 4 },
               }}
               image={EshwarNagPilli}
               title="Eshwar Nag Pilli"
@@ -261,11 +264,11 @@ export default function Index() {
                   flexWrap: "wrap",
                 }}
               >
-                Software Development Engineer 2 (SDE II) at
+                Software Development Engineer II at
                 <Box
                   sx={{
-                    width: { xs: "40px", sm: "48px", md: "56px" },
-                    height: { xs: "40px", sm: "48px", md: "56px" },
+                    width: { xs: "48px", sm: "54px", md: "60px" },
+                    height: { xs: "48px", sm: "54px", md: "60px" },
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -273,6 +276,7 @@ export default function Index() {
                 >
                   <img
                     style={{
+                      marginTop: "6px",
                       width: "100%",
                       height: "100%",
                       objectFit: "contain",
