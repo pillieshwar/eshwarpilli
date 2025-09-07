@@ -59,100 +59,135 @@ export default function FailedProjects() {
   const nstr = arr[0].desc;
 
   return (
-    <Box sx={{ flexGrow: 1 }} pt={10}>
-      <Grid container spacing={5}>
+    <Box sx={{ flexGrow: 1, maxWidth: "100%", overflow: "hidden" }}>
+      <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
         <Grid xs={12} md={3}>
-          <Grid xs={10} textAlign="center">
-            <Chip
-              sx={{ paddingLeft: 2.5 }}
-              variant="outlined"
-              icon={
-                <StyledBadge
-                  overlap="circular"
-                  anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                  variant="dot"
-                ></StyledBadge>
-              }
-              label=" FAILED PROJECTS"
-            />
-          </Grid>
-          <Grid container>
-            <Grid item textAlign={"center"} xs={12}>
-              <Typography
-                sx={{ fontSize: 20 }}
-                gutterBottom
-                variant="button"
-                component="div"
-              >
-                {/* {arr[0].title} */}
-              </Typography>
+          <Box sx={{ mb: { xs: 3, md: 0 } }}>
+            <Grid xs={12} textAlign="center" sx={{ mb: 2 }}>
+              <Chip
+                sx={{ 
+                  paddingLeft: 2.5,
+                  fontSize: { xs: "0.75rem", sm: "0.875rem" }
+                }}
+                variant="outlined"
+                icon={
+                  <StyledBadge
+                    overlap="circular"
+                    anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                    variant="dot"
+                  ></StyledBadge>
+                }
+                label=" FAILED PROJECTS"
+              />
             </Grid>
-            <Grid item xs={12}>
-              <Typography
-                gutterBottom
-                variant="body1"
-                color="text.secondary"
-                style={{ fontWeight: "bold" }}
-              >
-                Launch Date:{" "}
-                <span style={{ fontWeight: "lighter" }}>
-                  {arr[0].launchDate}
-                </span>
-              </Typography>
-              <Typography
-                gutterBottom
-                variant="body1"
-                color="text.secondary"
-                style={{ fontWeight: "bold" }}
-              >
-                Category:{" "}
-                <span style={{ fontWeight: "lighter" }}>
-                  {" "}
-                  {arr[0].category}
-                </span>
-              </Typography>
-              <Typography
-                variant="body1"
-                color="text.secondary"
-                style={{ fontWeight: "bold" }}
-              >
-                Target Audience:{" "}
-                <span style={{ fontWeight: "lighter" }}>
-                  {arr[0].targetAudience}
-                </span>
-              </Typography>
-              <Typography
-                gutterBottom
-                variant="body1"
-                color="text.secondary"
-                style={{ fontWeight: "bold" }}
-              >
-                Website:{" "}
-                <span style={{ fontWeight: "lighter" }}>
-                  {" "}
-                  {arr[0].websiteLink}
-                </span>
-              </Typography>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <Typography
+                  sx={{ 
+                    fontSize: { xs: 16, sm: 18, md: 20 },
+                    fontWeight: 600,
+                    mb: 2
+                  }}
+                  gutterBottom
+                  variant="button"
+                  component="div"
+                >
+                  Project Details
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <Box sx={{ 
+                  p: 2, 
+                  backgroundColor: "#f5f5f5", 
+                  borderRadius: 2,
+                  mb: 2
+                }}>
+                  <Typography
+                    gutterBottom
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ 
+                      fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                      fontWeight: 600,
+                      mb: 1
+                    }}
+                  >
+                    Launch Date:{" "}
+                    <span style={{ fontWeight: 400 }}>
+                      {arr[0].launchDate}
+                    </span>
+                  </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ 
+                      fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                      fontWeight: 600,
+                      mb: 1
+                    }}
+                  >
+                    Category:{" "}
+                    <span style={{ fontWeight: 400 }}>
+                      {arr[0].category}
+                    </span>
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ 
+                      fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                      fontWeight: 600,
+                      mb: 1
+                    }}
+                  >
+                    Target Audience:{" "}
+                    <span style={{ fontWeight: 400 }}>
+                      {arr[0].targetAudience}
+                    </span>
+                  </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ 
+                      fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                      fontWeight: 600,
+                      mb: 1
+                    }}
+                  >
+                    Website:{" "}
+                    <span style={{ fontWeight: 400 }}>
+                      {arr[0].websiteLink}
+                    </span>
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ 
+                      fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                      fontWeight: 600
+                    }}
+                  >
+                    Impact:{" "}
+                    <span style={{ fontWeight: 400 }}>{arr[0].impact}</span>
+                  </Typography>
+                </Box>
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <Typography
-                variant="body1"
-                color="text.secondary"
-                style={{ fontWeight: "bold" }}
-              >
-                Impact:{" "}
-                <span style={{ fontWeight: "lighter" }}>{arr[0].impact}</span>
-              </Typography>
-            </Grid>
-          </Grid>
+          </Box>
         </Grid>
-        <Grid xs={12} md={8}>
-          <Grid container spacing={2}>
-            <Grid item textAlign={"center"} xs={12}>
+        <Grid xs={12} md={9}>
+          <Grid container spacing={{ xs: 2, sm: 3 }}>
+            <Grid item xs={12} textAlign="center">
               <Typography
-                sx={{ fontSize: 20 }}
+                sx={{ 
+                  fontSize: { xs: 18, sm: 20, md: 24 },
+                  fontWeight: 600,
+                  mb: 2
+                }}
                 gutterBottom
-                variant="button"
+                variant="h4"
                 component="div"
               >
                 {arr[0].title}
@@ -160,25 +195,52 @@ export default function FailedProjects() {
             </Grid>
             <Grid xs={12}>
               {arr[0].frontImage === "1" ? (
-                <img src={StatementofPurposeDashboardImg} />
+                <Box sx={{ 
+                  width: "100%", 
+                  maxWidth: "100%",
+                  overflow: "hidden",
+                  borderRadius: 2,
+                  boxShadow: 2
+                }}>
+                  <img 
+                    src={StatementofPurposeDashboardImg} 
+                    alt="Project dashboard"
+                    style={{ 
+                      width: "100%", 
+                      height: "auto",
+                      display: "block"
+                    }}
+                  />
+                </Box>
               ) : (
-                <img />
+                <Box sx={{ 
+                  width: "100%", 
+                  height: "200px",
+                  backgroundColor: "#f5f5f5",
+                  borderRadius: 2,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}>
+                  <Typography color="text.secondary">No image available</Typography>
+                </Box>
               )}
             </Grid>
-            <Grid xs={12} pt={5}>
-              <div style={{ whiteSpace: "pre-wrap" }}>{nstr}</div>
-
-              {/* <Typography
+            <Grid xs={12} sx={{ pt: { xs: 3, sm: 4, md: 5 } }}>
+              <Typography
                 variant="body1"
                 color="text.secondary"
-                textAlign={"justify"}
+                sx={{ 
+                  fontSize: { xs: "0.9rem", sm: "1rem" },
+                  lineHeight: 1.7,
+                  whiteSpace: "pre-wrap"
+                }}
               >
-                {arr[0].desc}
-              </Typography> */}
+                {nstr}
+              </Typography>
             </Grid>
           </Grid>
         </Grid>
-        <Grid xs={0} md={1}></Grid>
       </Grid>
     </Box>
   );

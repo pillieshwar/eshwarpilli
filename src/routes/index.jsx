@@ -206,23 +206,50 @@ export default function Index() {
   ];
 
   return (
-    <Box sx={{ flexGrow: 1 }} pt={10}>
-      <Grid container spacing={5}>
+    <Box sx={{ flexGrow: 1, maxWidth: "100%", overflow: "hidden" }}>
+      <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
         <Grid xs={12} md={4} position="relative">
-          <Card>
+          <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
             <CardMedia
-              sx={{ height: 400 }}
+              sx={{ 
+                height: { xs: 300, sm: 350, md: 400 },
+                objectFit: "cover"
+              }}
               image={EshwarNagPilli}
               title="Eshwar Nag Pilli"
             />
-            <CardContent>
-              <Typography gutterBottom variant="h6" component="div">
+            <CardContent sx={{ flexGrow: 1 }}>
+              <Typography 
+                gutterBottom 
+                variant="h6" 
+                component="div"
+                sx={{ 
+                  fontSize: { xs: "1.1rem", sm: "1.25rem", md: "1.5rem" },
+                  fontWeight: 600
+                }}
+              >
                 Eshwar Nag Pilli
               </Typography>
-              <Typography gutterBottom variant="body2" component="div">
+              <Typography 
+                gutterBottom 
+                variant="body2" 
+                component="div"
+                sx={{ 
+                  fontSize: { xs: "0.9rem", sm: "1rem" },
+                  fontWeight: 500,
+                  color: "#1976d2"
+                }}
+              >
                 Software Development Engineer(SDE) at Amazon
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography 
+                variant="body2" 
+                color="text.secondary"
+                sx={{ 
+                  fontSize: { xs: "0.85rem", sm: "0.9rem" },
+                  lineHeight: 1.6
+                }}
+              >
                 Dedicated, hardworking, energetic graduate student studying
                 Masters in Computer Science at Washington State University.
                 Skilled in data structures, algorithms, problem-solving, and web
@@ -252,10 +279,14 @@ export default function Index() {
               />
             </Grid>
           </Grid>
-          {infoStack.map((data) => (
-            <Grid container spacing={2}>
-              <Grid xs={12} md={2} sx={{ float: "right" }}>
-                <div class="box">
+          {infoStack.map((data, index) => (
+            <Grid container spacing={{ xs: 2, sm: 3 }} key={index} sx={{ mb: 3 }}>
+              <Grid xs={12} md={2} sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-end" } }}>
+                <Box sx={{ 
+                  width: { xs: "120px", sm: "140px", md: "100%" },
+                  height: { xs: "120px", sm: "140px", md: "auto" },
+                  maxWidth: { md: "150px" }
+                }}>
                   <Link
                     to={data[2]}
                     target="_blank"
@@ -263,37 +294,66 @@ export default function Index() {
                     style={{ textDecoration: "none", color: "#000" }}
                   >
                     <img
-                      style={{ float: "right" }}
-                      height={"100vh"}
+                      style={{ 
+                        width: "100%", 
+                        height: "100%", 
+                        objectFit: "contain",
+                        borderRadius: "8px"
+                      }}
                       src={data[0]}
                       alt="Find Statement of Purpose examples and get your statement of purpose reviewed"
                     />
                   </Link>
-                </div>
+                </Box>
               </Grid>
               <Grid xs={12} md={10}>
-                <Typography gutterBottom variant="h6" component="div">
+                <Typography 
+                  gutterBottom 
+                  variant="h6" 
+                  component="div"
+                  sx={{ 
+                    fontSize: { xs: "1.1rem", sm: "1.25rem", md: "1.5rem" },
+                    fontWeight: 600,
+                    mb: 1
+                  }}
+                >
                   <Link
                     to={data[2]}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ textDecoration: "none", color: "#000" }}
+                    style={{ 
+                      textDecoration: "none", 
+                      color: "#000",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem"
+                    }}
                   >
-                    {data[1]} <OpenInNewIcon sx={{ color: "#1876D0" }} />
+                    {data[1]} <OpenInNewIcon sx={{ color: "#1876D0", fontSize: { xs: "1rem", sm: "1.2rem" } }} />
                   </Link>
                 </Typography>
-                <div style={{ display: "inline" }}>
-                  <Typography variant="body2" color="text.secondary">
-                    {data[3]}
-                    <Link
-                      to={data[4]}
-                      style={{ textDecoration: "none", color: "#1876D0" }}
-                    >
-                      {" "}
-                      View Project
-                    </Link>
-                  </Typography>
-                </div>
+                <Typography 
+                  variant="body2" 
+                  color="text.secondary"
+                  sx={{ 
+                    fontSize: { xs: "0.9rem", sm: "1rem" },
+                    lineHeight: 1.6,
+                    mb: 1
+                  }}
+                >
+                  {data[3]}
+                </Typography>
+                <Link
+                  to={data[4]}
+                  style={{ 
+                    textDecoration: "none", 
+                    color: "#1876D0",
+                    fontWeight: 500,
+                    fontSize: "0.9rem"
+                  }}
+                >
+                  View Project →
+                </Link>
               </Grid>
             </Grid>
           ))}
@@ -313,10 +373,14 @@ export default function Index() {
               />
             </Grid>
           </Grid>
-          {steppingStones.map((data) => (
-            <Grid container spacing={2}>
-              <Grid xs={12} md={2} sx={{ float: "right" }}>
-                <div class="box">
+          {steppingStones.map((data, index) => (
+            <Grid container spacing={{ xs: 2, sm: 3 }} key={index} sx={{ mb: 3 }}>
+              <Grid xs={12} md={2} sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-end" } }}>
+                <Box sx={{ 
+                  width: { xs: "120px", sm: "140px", md: "100%" },
+                  height: { xs: "120px", sm: "140px", md: "auto" },
+                  maxWidth: { md: "150px" }
+                }}>
                   <Link
                     to={data[2]}
                     target="_blank"
@@ -324,45 +388,78 @@ export default function Index() {
                     style={{ textDecoration: "none", color: "#000" }}
                   >
                     <img
-                      style={{ float: "right" }}
-                      height={"100vh"}
+                      style={{ 
+                        width: "100%", 
+                        height: "100%", 
+                        objectFit: "contain",
+                        borderRadius: "8px"
+                      }}
                       src={data[0]}
                       alt="Find Statement of Purpose examples and get your statement of purpose reviewed"
                     />
                   </Link>
-                </div>
+                </Box>
               </Grid>
               <Grid xs={12} md={10}>
-                <Typography gutterBottom variant="h6" component="div">
+                <Typography 
+                  gutterBottom 
+                  variant="h6" 
+                  component="div"
+                  sx={{ 
+                    fontSize: { xs: "1.1rem", sm: "1.25rem", md: "1.5rem" },
+                    fontWeight: 600,
+                    mb: 1
+                  }}
+                >
                   <Link
                     to={data[2]}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ textDecoration: "none", color: "#000" }}
+                    style={{ 
+                      textDecoration: "none", 
+                      color: "#000",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem"
+                    }}
                   >
-                    {data[1]} <OpenInNewIcon sx={{ color: "#1876D0" }} />
+                    {data[1]} <OpenInNewIcon sx={{ color: "#1876D0", fontSize: { xs: "1rem", sm: "1.2rem" } }} />
                   </Link>
                 </Typography>
-                <div style={{ display: "inline" }}>
-                  <Typography variant="body2" color="text.secondary">
-                    {data[3]}
-                    <Link
-                      to={data[4]}
-                      style={{ textDecoration: "none", color: "#1876D0" }}
-                    >
-                      {" "}
-                      View Project
-                    </Link>
-                  </Typography>
-                </div>
+                <Typography 
+                  variant="body2" 
+                  color="text.secondary"
+                  sx={{ 
+                    fontSize: { xs: "0.9rem", sm: "1rem" },
+                    lineHeight: 1.6,
+                    mb: 1
+                  }}
+                >
+                  {data[3]}
+                </Typography>
+                <Link
+                  to={data[4]}
+                  style={{ 
+                    textDecoration: "none", 
+                    color: "#1876D0",
+                    fontWeight: 500,
+                    fontSize: "0.9rem"
+                  }}
+                >
+                  View Project →
+                </Link>
               </Grid>
             </Grid>
           ))}
           <hr></hr>
-          <Grid container>
+          <Grid container spacing={2}>
             <Grid item xs={12} textAlign="center">
               <Typography
-                sx={{ fontSize: 20 }}
+                sx={{ 
+                  fontSize: { xs: 18, sm: 20 },
+                  fontWeight: 600,
+                  mb: 2
+                }}
                 gutterBottom
                 variant="button"
                 component="div"
@@ -371,9 +468,25 @@ export default function Index() {
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              {skills.map((skill) => (
-                <Chip sx={{ m: 1 }} label={skill} size="medium" />
-              ))}
+              <Box sx={{ 
+                display: "flex", 
+                flexWrap: "wrap", 
+                gap: { xs: 1, sm: 1.5 },
+                justifyContent: { xs: "center", sm: "flex-start" }
+              }}>
+                {skills.map((skill, index) => (
+                  <Chip 
+                    key={index}
+                    sx={{ 
+                      m: { xs: 0.5, sm: 1 },
+                      fontSize: { xs: "0.75rem", sm: "0.875rem" },
+                      height: { xs: 28, sm: 32 }
+                    }} 
+                    label={skill} 
+                    size="medium" 
+                  />
+                ))}
+              </Box>
             </Grid>
           </Grid>
           {/* <hr></hr>
@@ -391,10 +504,14 @@ export default function Index() {
             <Grid item xs={12}></Grid>
           </Grid> */}
           <hr></hr>
-          <Grid container>
+          <Grid container spacing={2}>
             <Grid item xs={12} textAlign="center">
               <Typography
-                sx={{ fontSize: 20 }}
+                sx={{ 
+                  fontSize: { xs: 18, sm: 20 },
+                  fontWeight: 600,
+                  mb: 2
+                }}
                 gutterBottom
                 variant="button"
                 component="div"
@@ -403,34 +520,68 @@ export default function Index() {
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              {workExperience.map((data) => (
-                <Grid container spacing={2}>
-                  <Grid xs={12} md={2} sx={{ float: "right" }}>
-                    <div class="box">
+              {workExperience.map((data, index) => (
+                <Grid container spacing={{ xs: 2, sm: 3 }} key={index} sx={{ mb: 3 }}>
+                  <Grid xs={12} md={2} sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-end" } }}>
+                    <Box sx={{ 
+                      width: { xs: "80px", sm: "100px", md: "100%" },
+                      height: { xs: "80px", sm: "100px", md: "auto" },
+                      maxWidth: { md: "120px" }
+                    }}>
                       <img
-                        style={{ float: "right" }}
-                        height={"100vh"}
+                        style={{ 
+                          width: "100%", 
+                          height: "100%", 
+                          objectFit: "contain",
+                          borderRadius: "8px"
+                        }}
                         src={data[0]}
-                        alt="Find Statement of Purpose examples and get your statement of purpose reviewed"
+                        alt="Company logo"
                       />
-                    </div>
+                    </Box>
                   </Grid>
 
                   <Grid xs={12} md={10}>
                     <Typography
                       gutterBottom
                       variant="body2"
-                      component="text.secondary"
+                      color="text.secondary"
+                      sx={{ 
+                        fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                        fontWeight: 500
+                      }}
                     >
                       {data[1]}
                     </Typography>
-                    <Typography gutterBottom variant="h6" component="div">
+                    <Typography 
+                      gutterBottom 
+                      variant="h6" 
+                      component="div"
+                      sx={{ 
+                        fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" },
+                        fontWeight: 600,
+                        mb: 0.5
+                      }}
+                    >
                       {data[2]}
                     </Typography>
-                    <Typography variant="body1" color="div">
+                    <Typography 
+                      variant="body1" 
+                      sx={{ 
+                        fontSize: { xs: "0.9rem", sm: "1rem" },
+                        fontWeight: 500,
+                        mb: 0.5
+                      }}
+                    >
                       {data[3]}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography 
+                      variant="body2" 
+                      color="text.secondary"
+                      sx={{ 
+                        fontSize: { xs: "0.8rem", sm: "0.9rem" }
+                      }}
+                    >
                       {data[4]}
                     </Typography>
                   </Grid>
@@ -439,10 +590,14 @@ export default function Index() {
             </Grid>
           </Grid>
           <hr></hr>
-          <Grid container>
+          <Grid container spacing={2}>
             <Grid item xs={12} textAlign="center">
               <Typography
-                sx={{ fontSize: 20 }}
+                sx={{ 
+                  fontSize: { xs: 18, sm: 20 },
+                  fontWeight: 600,
+                  mb: 2
+                }}
                 gutterBottom
                 variant="button"
                 component="div"
@@ -451,34 +606,68 @@ export default function Index() {
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              {education.map((data) => (
-                <Grid container spacing={2}>
-                  <Grid xs={12} md={2} sx={{ float: "right" }}>
-                    <div class="box">
+              {education.map((data, index) => (
+                <Grid container spacing={{ xs: 2, sm: 3 }} key={index} sx={{ mb: 3 }}>
+                  <Grid xs={12} md={2} sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-end" } }}>
+                    <Box sx={{ 
+                      width: { xs: "80px", sm: "100px", md: "100%" },
+                      height: { xs: "80px", sm: "100px", md: "auto" },
+                      maxWidth: { md: "120px" }
+                    }}>
                       <img
-                        style={{ float: "right" }}
-                        height={"100vh"}
+                        style={{ 
+                          width: "100%", 
+                          height: "100%", 
+                          objectFit: "contain",
+                          borderRadius: "8px"
+                        }}
                         src={data[0]}
-                        alt="Find Statement of Purpose examples and get your statement of purpose reviewed"
+                        alt="University logo"
                       />
-                    </div>
+                    </Box>
                   </Grid>
 
                   <Grid xs={12} md={10}>
                     <Typography
                       gutterBottom
                       variant="body2"
-                      component="text.secondary"
+                      color="text.secondary"
+                      sx={{ 
+                        fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                        fontWeight: 500
+                      }}
                     >
                       {data[1]}
                     </Typography>
-                    <Typography gutterBottom variant="h6" component="div">
+                    <Typography 
+                      gutterBottom 
+                      variant="h6" 
+                      component="div"
+                      sx={{ 
+                        fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" },
+                        fontWeight: 600,
+                        mb: 0.5
+                      }}
+                    >
                       {data[2]}
                     </Typography>
-                    <Typography variant="body1" color="div">
+                    <Typography 
+                      variant="body1" 
+                      sx={{ 
+                        fontSize: { xs: "0.9rem", sm: "1rem" },
+                        fontWeight: 500,
+                        mb: 0.5
+                      }}
+                    >
                       {data[3]}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography 
+                      variant="body2" 
+                      color="text.secondary"
+                      sx={{ 
+                        fontSize: { xs: "0.8rem", sm: "0.9rem" }
+                      }}
+                    >
                       {data[4]}
                     </Typography>
                   </Grid>

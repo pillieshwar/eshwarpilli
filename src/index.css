@@ -385,3 +385,54 @@ img {
   max-width: 100%;
   display: block;
 }
+
+/* Responsive improvements */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  /* Ensure proper touch targets */
+  button,
+  a,
+  input,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Improve readability on mobile */
+  p,
+  span,
+  div {
+    line-height: 1.6;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 601px) and (max-width: 1024px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+/* Desktop optimizations */
+@media (min-width: 1025px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus improvements for accessibility */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}
