@@ -255,9 +255,33 @@ export default function Index() {
                   fontSize: { xs: "0.9rem", sm: "1rem" },
                   fontWeight: 500,
                   color: "#1976d2",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: { xs: 0.5, sm: 1 },
+                  flexWrap: "wrap",
                 }}
               >
-                Software Development Engineer(SDE) at Amazon
+                Software Development Engineer 2 (SDE II) at
+                <Box
+                  sx={{
+                    width: { xs: "40px", sm: "48px", md: "56px" },
+                    height: { xs: "40px", sm: "48px", md: "56px" },
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <img
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                      borderRadius: "4px",
+                    }}
+                    src={AMAZON}
+                    alt="Amazon logo"
+                  />
+                </Box>
               </Typography>
               <Typography
                 variant="body2"
@@ -267,10 +291,25 @@ export default function Index() {
                   lineHeight: 1.6,
                 }}
               >
-                Dedicated, hardworking, energetic graduate student studying
-                Masters in Computer Science at Washington State University.
-                Skilled in data structures, algorithms, problem-solving, and web
-                development. Passionate about Innovation.
+                SDE II at Amazon building reliable backend services on AWS.
+                Strong in data structures, algorithms, distributed systems, and
+                web development. I like simple designs, strong tests, and fast
+                feedback loops. Interested in startups and shipping small
+                improvements that add up to 0.1%. <br></br>
+                <br></br>I am also startup-curious. I enjoy validating small
+                problems, shipping lightweight prototypes, and learning from
+                users. My personal goal is simple: make something that improves
+                life by even 0.1%, then keep compounding.
+                <br></br>
+                <br></br>
+                <strong>Book time :</strong>{" "}
+                <a href="https://cal.com/eshwarpilli/30min">Schedule Call</a>{" "}
+                <OpenInNewIcon
+                  sx={{
+                    color: "#1876D0",
+                    fontSize: { xs: "1rem", sm: "1.2rem" },
+                  }}
+                />
               </Typography>
             </CardContent>
             <CardActions>
