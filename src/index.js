@@ -12,6 +12,7 @@ import LiveProjects from "./routes/liveProjects";
 import FailedProjects from "./routes/failedProjects";
 import Contact, { loader as contactLoader } from "./routes/liveProjects";
 import Blogs from "./routes/blogs";
+import BlogDetail from "./routes/blogDetail";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "blogs",
         element: <Blogs />,
+      },
+      {
+        path: "blog/:id",
+        element: <BlogDetail />,
       },
       {
         path: "live-projects/:projectName",
