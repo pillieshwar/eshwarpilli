@@ -347,6 +347,22 @@ export default function Index() {
                   fontSize: { xs: "1rem", sm: "1.2rem" },
                 }}
               />
+              <br></br>
+              <br></br>
+              <strong>Resume :</strong>{" "}
+              <a
+                href="/Eshwar_2025_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Resume
+              </a>{" "}
+              <OpenInNewIcon
+                sx={{
+                  color: "#1876D0",
+                  fontSize: { xs: "1rem", sm: "1.2rem" },
+                }}
+              />
             </Typography>
           </CardContent>
           <CardActions>
