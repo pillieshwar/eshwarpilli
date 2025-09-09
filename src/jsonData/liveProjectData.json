@@ -1,12 +1,22 @@
 {
+  "dpay": {
+    "title": "DPay",
+    "launchDate": "7 September 2025",
+    "category": "Healthcare FinTech",
+    "targetAudience": "Hospitals, clinics, and healthcare professionals",
+    "websiteLink": "https://dpay.com",
+    "impact": "Simplifies and automates doctor payouts, reducing manual effort and delays, so healthcare providers can focus on patient care.",
+    "desc": "DPay is a web-based platform designed to make doctor payments seamless and accurate. Hospitals often struggle with manual calculations, delayed payouts, and complex billing processes. DPay solves this by automating payment management, ensuring fair and transparent calculations for every doctor. The platform also integrates with hospital, doctor, billing, and payment management modules, offering a complete solution for healthcare institutions. With features like real-time payout tracking, error-free billing, and simple reporting, DPay empowers hospitals to streamline operations while letting doctors focus on what matters most—patient care.",
+    "frontImage": "3"
+  },
   "memoryvault": {
-    "title": "Our Experiences",
+    "title": "MemoryVault",
     "launchDate": "7 September 2024",
     "category": "Digital Preservation",
     "targetAudience": "Families, storytellers, creators, and anyone looking to preserve memories",
     "websiteLink": "https://memoryvault.vercel.app/",
     "impact": "Provides a permanent way to secure and access personal memories and stories using QR codes linked to blockchain, ensuring they last a lifetime.",
-    "desc": "Our Experiences is a platform that allows people to preserve their most meaningful moments—photos, stories, and messages—forever. Each memory is securely stored using blockchain technology and linked to a unique QR code, making it easily accessible across generations. Whether it’s a milestone, a personal journey, or a family legacy, Our Experiences ensures these memories are tamper-proof, timeless, and always just a scan away. By combining accessibility with cutting-edge digital preservation, we make it possible for people to share and revisit their stories in the most reliable way.",
+    "desc": "MemoryVault is a platform that allows people to preserve their most meaningful moments—photos, stories, and messages—forever. Each memory is securely stored using blockchain technology and linked to a unique QR code, making it easily accessible across generations. Whether it’s a milestone, a personal journey, or a family legacy, Our Experiences ensures these memories are tamper-proof, timeless, and always just a scan away. By combining accessibility with cutting-edge digital preservation, we make it possible for people to share and revisit their stories in the most reliable way.",
     "frontImage": "2"
   },
   "terodoc-statement-of-purpose": {

@@ -9,6 +9,7 @@ import { useRef } from "react";
 import { useLoaderData } from "react-router-dom";
 import StatementofPurposeDashboardImg from "./../images/dashboard.png";
 import memoryvaultImg from "./../images/memoryvault.png";
+import dpayImg from "./../images/dpay.png";
 import liveProjectDataJson from "./../jsonData/liveProjectData.json";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -224,6 +225,26 @@ export default function LiveProjects() {
                 >
                   <img
                     src={memoryvaultImg}
+                    alt="Project dashboard"
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      display: "block",
+                    }}
+                  />
+                </Box>
+              ) : arr[0].frontImage === "3" ? (
+                <Box
+                  sx={{
+                    width: "100%",
+                    maxWidth: "100%",
+                    overflow: "hidden",
+                    borderRadius: 2,
+                    boxShadow: 2,
+                  }}
+                >
+                  <img
+                    src={dpayImg}
                     alt="Project dashboard"
                     style={{
                       width: "100%",

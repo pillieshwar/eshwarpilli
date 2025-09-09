@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import EshwarNagPilli from "./../images/Eshwar_Nag_Pilli.png";
 import Terodoc_Statement_of_Purpose from "./../images/Terodoc_Statement_of_Purpose.png";
 import memoryvaultLogo from "./../images/memoryvaultLogo.png";
+import dpayLogo from "./../images/dpayLogo.png";
 import AMAZON from "./../images/amazon.png";
 import WSU from "./../images/wsu.png";
 import MIT from "./../images/mit.png";
@@ -104,6 +105,13 @@ const StyledBadgeFail = styled(Badge)(({ theme }) => ({
 }));
 export default function Index() {
   const infoStack = [
+    [
+      dpayLogo,
+      "DPay",
+      "https://eshwarpilli.vercel.app/",
+      "DPay is a web-based platform designed to make doctor payments seamless and accurate. Hospitals often struggle with manual calculations, delayed payouts, and complex billing processes. DPay solves this by automating payment management, ensuring fair and transparent calculations for every doctor. The platform also integrates with hospital, doctor, billing, and payment management modules, offering a complete solution for healthcare institutions. With features like real-time payout tracking, error-free billing, and simple reporting, DPay empowers hospitals to streamline operations while letting doctors focus on what matters most—patient care.",
+      "/live-projects/dpay",
+    ],
     [
       memoryvaultLogo,
       "MemoryVault",
