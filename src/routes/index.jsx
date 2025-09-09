@@ -229,108 +229,144 @@ export default function Index() {
   ];
 
   return (
-    <Box sx={{ flexGrow: 1, maxWidth: "100%", overflow: "hidden" }}>
-      <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
-        <Grid xs={12} md={4} position="relative">
-          <Card
-            sx={{ height: "100%", display: "flex", flexDirection: "column" }}
-          >
-            <CardMedia
+    <Box
+      sx={{
+        display: "flex",
+        height: { xs: "auto", md: "calc(100vh - 64px)" }, // Only fixed height on desktop
+        overflow: { xs: "visible", md: "hidden" }, // Allow overflow on mobile
+        flexDirection: { xs: "column", md: "row" }, // Stack on mobile, side-by-side on desktop
+      }}
+    >
+      {/* Left Side - Static Profile Card */}
+      <Box
+        sx={{
+          width: { xs: "100%", md: "33.33%" },
+          minWidth: { md: "400px" },
+          height: { xs: "auto", md: "100%" },
+          position: { xs: "relative", md: "sticky" },
+          top: 0,
+          overflow: { xs: "visible", md: "hidden" },
+          display: { xs: "block", md: "flex" },
+          flexDirection: "column",
+        }}
+      >
+        <Card
+          sx={{
+            height: { xs: "auto", md: "100%" },
+            display: "flex",
+            flexDirection: "column",
+            borderRadius: { xs: 2, md: 0 },
+            boxShadow: { xs: 2, md: "none" },
+            border: { md: "none" },
+          }}
+        >
+          <CardMedia
+            sx={{
+              alignSelf: "center",
+              height: { xs: 300, sm: 350, md: 400 },
+              objectFit: "cover",
+              width: "80%",
+              mt: { xs: 2, sm: 3, md: 4 },
+            }}
+            image={EshwarNagPilli}
+            title="Eshwar Nag Pilli"
+          />
+          <CardContent sx={{ flexGrow: 1 }}>
+            <Typography
+              gutterBottom
+              variant="h6"
+              component="div"
               sx={{
-                alignSelf: "center",
-                height: { xs: 300, sm: 350, md: 400 },
-                objectFit: "cover",
-                width: "80%",
-                mt: { xs: 2, sm: 3, md: 4 },
+                fontSize: { xs: "1.1rem", sm: "1.25rem", md: "1.5rem" },
+                fontWeight: 600,
               }}
-              image={EshwarNagPilli}
-              title="Eshwar Nag Pilli"
-            />
-            <CardContent sx={{ flexGrow: 1 }}>
-              <Typography
-                gutterBottom
-                variant="h6"
-                component="div"
+            >
+              Eshwar Nag Pilli
+            </Typography>
+            <Typography
+              gutterBottom
+              variant="body2"
+              component="div"
+              sx={{
+                fontSize: { xs: "0.9rem", sm: "1rem" },
+                fontWeight: 500,
+                color: "#1976d2",
+                display: "flex",
+                alignItems: "center",
+                gap: { xs: 0.5, sm: 1 },
+                flexWrap: "wrap",
+              }}
+            >
+              Software Development Engineer II at
+              <Box
                 sx={{
-                  fontSize: { xs: "1.1rem", sm: "1.25rem", md: "1.5rem" },
-                  fontWeight: 600,
-                }}
-              >
-                Eshwar Nag Pilli
-              </Typography>
-              <Typography
-                gutterBottom
-                variant="body2"
-                component="div"
-                sx={{
-                  fontSize: { xs: "0.9rem", sm: "1rem" },
-                  fontWeight: 500,
-                  color: "#1976d2",
+                  width: { xs: "48px", sm: "54px", md: "60px" },
+                  height: { xs: "48px", sm: "54px", md: "60px" },
                   display: "flex",
                   alignItems: "center",
-                  gap: { xs: 0.5, sm: 1 },
-                  flexWrap: "wrap",
+                  justifyContent: "center",
                 }}
               >
-                Software Development Engineer II at
-                <Box
-                  sx={{
-                    width: { xs: "48px", sm: "54px", md: "60px" },
-                    height: { xs: "48px", sm: "54px", md: "60px" },
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                <img
+                  style={{
+                    marginTop: "6px",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                    borderRadius: "4px",
                   }}
-                >
-                  <img
-                    style={{
-                      marginTop: "6px",
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "contain",
-                      borderRadius: "4px",
-                    }}
-                    src={AMAZON}
-                    alt="Amazon logo"
-                  />
-                </Box>
-              </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{
-                  fontSize: { xs: "0.85rem", sm: "0.9rem" },
-                  lineHeight: 1.6,
-                }}
-              >
-                SDE II at Amazon building reliable backend services on AWS.
-                Strong in data structures, algorithms, distributed systems, and
-                web development. I like simple designs, strong tests, and fast
-                feedback loops. Interested in startups and shipping small
-                improvements that add up to 0.1%. <br></br>
-                <br></br>I am also startup-curious. I enjoy validating small
-                problems, shipping lightweight prototypes, and learning from
-                users. My personal goal is simple: make something that improves
-                life by even 0.1%, then keep compounding.
-                <br></br>
-                <br></br>
-                <strong>Book time :</strong>{" "}
-                <a href="https://cal.com/eshwarpilli/30min">Schedule Call</a>{" "}
-                <OpenInNewIcon
-                  sx={{
-                    color: "#1876D0",
-                    fontSize: { xs: "1rem", sm: "1.2rem" },
-                  }}
+                  src={AMAZON}
+                  alt="Amazon logo"
                 />
-              </Typography>
-            </CardContent>
-            <CardActions>
-              {/* <Button size="small">Share</Button>
-              <Button size="small">Learn More</Button> */}
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid xs={12} md={8}>
+              </Box>
+            </Typography>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{
+                fontSize: { xs: "0.85rem", sm: "0.9rem" },
+                lineHeight: 1.6,
+              }}
+            >
+              SDE II at Amazon building reliable backend services on AWS. Strong
+              in data structures, algorithms, distributed systems, and web
+              development. I like simple designs, strong tests, and fast
+              feedback loops. Interested in startups and shipping small
+              improvements that add up to 0.1%. <br></br>
+              <br></br>I am also startup-curious. I enjoy validating small
+              problems, shipping lightweight prototypes, and learning from
+              users. My personal goal is simple: make something that improves
+              life by even 0.1%, then keep compounding.
+              <br></br>
+              <br></br>
+              <strong>Book time :</strong>{" "}
+              <a href="https://cal.com/eshwarpilli/30min">Schedule Call</a>{" "}
+              <OpenInNewIcon
+                sx={{
+                  color: "#1876D0",
+                  fontSize: { xs: "1rem", sm: "1.2rem" },
+                }}
+              />
+            </Typography>
+          </CardContent>
+          <CardActions>
+            {/* <Button size="small">Share</Button>
+            <Button size="small">Learn More</Button> */}
+          </CardActions>
+        </Card>
+      </Box>
+
+      {/* Right Side - Scrollable Content */}
+      <Box
+        sx={{
+          flex: 1,
+          height: { xs: "auto", md: "100%" },
+          overflow: { xs: "visible", md: "auto" },
+          backgroundColor: { xs: "transparent", md: "#fafafa" },
+          borderLeft: { md: "1px solid #e0e0e0" },
+        }}
+      >
+        <Box sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
           <Grid container spacing={2}>
             <Grid xs={12} textAlign="center">
               <Chip
@@ -445,6 +481,35 @@ export default function Index() {
               </Grid>
             </Grid>
           ))}
+
+          {/* Divider between Live and Failed Projects */}
+          <Box
+            sx={{
+              my: 4,
+              display: "flex",
+              alignItems: "center",
+              "&::before, &::after": {
+                content: '""',
+                flex: 1,
+                height: "1px",
+                backgroundColor: "#e0e0e0",
+              },
+            }}
+          >
+            <Typography
+              variant="body2"
+              sx={{
+                px: 2,
+                color: "text.secondary",
+                fontSize: "0.875rem",
+                fontWeight: 500,
+                backgroundColor: "#fafafa",
+              }}
+            >
+              Learning Journey
+            </Typography>
+          </Box>
+
           <Grid container spacing={2}>
             <Grid xs={12} textAlign="center">
               <Chip
@@ -813,8 +878,8 @@ export default function Index() {
               ))}
             </Grid>
           </Grid>
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </Box>
   );
 }

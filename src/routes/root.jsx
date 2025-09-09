@@ -81,6 +81,7 @@ function Root(props) {
         <List sx={{ px: 2 }}>
           <ListItem key="homeHam" disablePadding>
             <ListItemButton
+              onClick={handleDrawerToggle}
               sx={{
                 borderRadius: 2,
                 mb: 1,
@@ -109,6 +110,7 @@ function Root(props) {
           {navItems.map((item) => (
             <ListItem key={item} disablePadding>
               <ListItemButton
+                onClick={handleDrawerToggle}
                 sx={{
                   borderRadius: 2,
                   mb: 1,
