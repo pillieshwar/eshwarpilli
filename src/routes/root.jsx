@@ -11,6 +11,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -29,84 +30,144 @@ function Root(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", pt: 2 }}>
+    <Box
+      sx={{
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        background: "linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%)",
+      }}
+    >
+      {/* Header with close button */}
       <Box
         sx={{
           display: "flex",
+          justifyContent: "space-between",
           alignItems: "center",
-          justifyContent: "center",
-          gap: 1,
-          mb: 2,
+          p: 2,
+          borderBottom: "1px solid #dee2e6",
         }}
       >
-        <ModeEditOutlineOutlinedIcon
-          sx={{ color: "#000", fontSize: "1.5rem" }}
-        />
         <Typography
           variant="h6"
-          sx={{ color: "#000", fontSize: "1.1rem", fontWeight: 600 }}
+          sx={{
+            color: "#000",
+            fontSize: "1.2rem",
+            fontWeight: 700,
+            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+            backgroundClip: "text",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
         >
           Eshwar Nag Pilli
         </Typography>
+        <IconButton
+          onClick={handleDrawerToggle}
+          sx={{
+            color: "#6c757d",
+            "&:hover": {
+              backgroundColor: "rgba(0,0,0,0.04)",
+              color: "#000",
+            },
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
       </Box>
-      <Divider sx={{ mb: 1 }} />
-      <List sx={{ px: 1 }}>
-        <ListItem key="homeHam" disablePadding>
-          <ListItemButton
-            sx={{
-              textAlign: "center",
-              borderRadius: 1,
-              mb: 0.5,
-              "&:hover": {
-                backgroundColor: "#e3e3e3",
-              },
-            }}
-          >
-            <ListItemText>
-              <Link
-                style={{
-                  textDecoration: "None",
-                  color: "#000",
-                  fontSize: "1rem",
-                  fontWeight: 500,
-                }}
-                to={`/`}
-              >
-                Home
-              </Link>
-            </ListItemText>
-          </ListItemButton>
-        </ListItem>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+
+      {/* Navigation */}
+      <Box sx={{ flexGrow: 1, pt: 2 }}>
+        <List sx={{ px: 2 }}>
+          <ListItem key="homeHam" disablePadding>
             <ListItemButton
               sx={{
-                textAlign: "center",
-                borderRadius: 1,
-                mb: 0.5,
+                borderRadius: 2,
+                mb: 1,
                 "&:hover": {
-                  backgroundColor: "#e3e3e3",
+                  backgroundColor: "rgba(102, 126, 234, 0.1)",
+                  transform: "translateX(4px)",
+                  transition: "all 0.2s ease-in-out",
                 },
               }}
             >
               <ListItemText>
-                <NavLink
-                  key={item}
+                <Link
                   style={{
                     textDecoration: "None",
                     color: "#000",
-                    fontSize: "1rem",
+                    fontSize: "1.1rem",
                     fontWeight: 500,
                   }}
-                  to={`/` + item}
+                  to={`/`}
                 >
-                  {item}
-                </NavLink>
+                  🏠 Home
+                </Link>
               </ListItemText>
             </ListItemButton>
           </ListItem>
-        ))}
-      </List>
+          {navItems.map((item) => (
+            <ListItem key={item} disablePadding>
+              <ListItemButton
+                sx={{
+                  borderRadius: 2,
+                  mb: 1,
+                  "&:hover": {
+                    backgroundColor: "rgba(102, 126, 234, 0.1)",
+                    transform: "translateX(4px)",
+                    transition: "all 0.2s ease-in-out",
+                  },
+                }}
+              >
+                <ListItemText>
+                  <NavLink
+                    key={item}
+                    style={{
+                      textDecoration: "None",
+                      color: "#000",
+                      fontSize: "1.1rem",
+                      fontWeight: 500,
+                    }}
+                    to={`/` + item}
+                  >
+                    📝 {item.charAt(0).toUpperCase() + item.slice(1)}
+                  </NavLink>
+                </ListItemText>
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Box>
+
+      {/* Footer */}
+      <Box
+        sx={{
+          p: 2,
+          borderTop: "1px solid #dee2e6",
+          textAlign: "center",
+          backgroundColor: "rgba(0,0,0,0.02)",
+        }}
+      >
+        <Typography
+          variant="body2"
+          sx={{
+            color: "#6c757d",
+            fontSize: "0.85rem",
+          }}
+        >
+          © 2024 Eshwar Nag Pilli
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{
+            color: "#6c757d",
+            fontSize: "0.75rem",
+            mt: 0.5,
+          }}
+        >
+          Software Development Engineer II
+        </Typography>
+      </Box>
     </Box>
   );
 
@@ -117,7 +178,6 @@ function Root(props) {
     <Box sx={{ display: "flex", minHeight: "100vh" }}>
       <CssBaseline />
       <AppBar
-        style={{ backgroundColor: "#000" }}
         component="nav"
         sx={{
           position: "fixed",
@@ -125,6 +185,9 @@ function Root(props) {
           left: 0,
           right: 0,
           zIndex: 1200,
+          background:
+            "linear-gradient(135deg,rgb(0, 0, 0) 0%,rgb(108, 107, 108) 100%)",
+          boxShadow: "0 4px 20px rgba(102, 126, 234, 0.3)",
         }}
       >
         <Toolbar sx={{ minHeight: { xs: 56, sm: 64 } }}>
@@ -210,8 +273,10 @@ function Root(props) {
             display: { xs: "block", sm: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
-              width: { xs: "280px", sm: drawerWidth },
-              backgroundColor: "#f5f5f5",
+              width: { xs: "320px", sm: drawerWidth },
+              backgroundColor: "transparent",
+              border: "none",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
             },
           }}
         >
