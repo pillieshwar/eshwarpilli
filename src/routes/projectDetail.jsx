@@ -7,14 +7,20 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { Link, useLoaderData } from "react-router-dom";
 import StatementofPurposeDashboardImg from "./../images/dashboard.png";
 import memoryvaultImg from "./../images/memoryvault.png";
-import dpayImg from "./../images/dpay.png";
 import projectDataJson from "./../jsonData/liveProjectData.json";
 import { ACCENT } from "../theme";
+import { renderRichText } from "../components/RichText";
+import ScreenshotCarousel from "../components/ScreenshotCarousel";
+import { dpayGallery } from "../images/dpay";
+
+// Projects with several screenshots get an auto-scrolling carousel.
+const galleries = {
+  dpay: dpayGallery,
+};
 
 const screenshots = {
   1: StatementofPurposeDashboardImg,
   2: memoryvaultImg,
-  3: dpayImg,
 };
 
 export async function loader({ params }) {
@@ -69,12 +75,8 @@ export default function ProjectDetail({ live }) {
     );
   }
 
+  const gallery = galleries[projectName];
   const screenshot = screenshots[project.frontImage];
-  const paragraphs = project.desc
-    .split(/\n\s*\n/)
-    .map((p) => p.trim())
-    .filter(Boolean);
-
   return (
     <Box sx={{ maxWidth: 1080, mx: "auto", py: { xs: 2, md: 4 } }}>
       {backLink}
@@ -95,7 +97,13 @@ export default function ProjectDetail({ live }) {
         </Typography>
       </Box>
 
-      {screenshot && (
+      {gallery && (
+        <Box sx={{ mb: { xs: 3, md: 5 } }}>
+          <ScreenshotCarousel slides={gallery} />
+        </Box>
+      )}
+
+      {!gallery && screenshot && (
         <Box
           component="img"
           src={screenshot}
@@ -124,16 +132,7 @@ export default function ProjectDetail({ live }) {
           <Typography variant="h2" sx={{ mb: 2 }}>
             About
           </Typography>
-          {paragraphs.map((p, i) => (
-            <Typography
-              key={i}
-              variant="body1"
-              color="text.secondary"
-              sx={{ mb: 2, whiteSpace: "pre-line" }}
-            >
-              {p}
-            </Typography>
-          ))}
+          {renderRichText(project.desc, project.title)}
         </Box>
 
         <Box

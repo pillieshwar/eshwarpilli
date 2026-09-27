@@ -1,125 +1,18 @@
 import * as React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { blogPosts } from "../jsonData/blogPosts";
+import { renderRichText } from "../components/RichText";
 import { Box, Button, Typography, Chip, CardMedia } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
-// Renders **bold** spans inside a line of post text.
-function renderInline(text) {
-  return text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
-    part.startsWith("**") && part.endsWith("**") ? (
-      <Box
-        component="strong"
-        key={i}
-        sx={{ fontWeight: 600, color: "text.primary" }}
-      >
-        {part.slice(2, -2)}
-      </Box>
-    ) : (
-      part
-    ),
-  );
-}
-
-// Turns the post's lightweight markdown into themed blocks.
-function renderContent(content, title) {
-  const blocks = [];
-  let list = null;
-  const flushList = () => {
-    if (list) {
-      blocks.push(
-        <Box
-          component="ul"
-          key={`list-${blocks.length}`}
-          sx={{
-            typography: "body1",
-            color: "text.secondary",
-            pl: 3,
-            mt: 0,
-            mb: 2.5,
-          }}
-        >
-          {list}
-        </Box>,
-      );
-      list = null;
-    }
-  };
-
-  content.split("\n").forEach((raw, index) => {
-    const line = raw.trim();
-    if (line.startsWith("- ")) {
-      list = list || [];
-      list.push(
-        <Box component="li" key={index} sx={{ mb: 0.75 }}>
-          {renderInline(line.slice(2))}
-        </Box>,
-      );
-      return;
-    }
-    flushList();
-    if (line === "") return;
-    if (line.startsWith("# ")) {
-      // The post title is already shown above; skip a repeated top-level heading.
-      if (line.slice(2) === title) return;
-      blocks.push(
-        <Typography key={index} variant="h2" sx={{ mt: 5, mb: 2 }}>
-          {line.slice(2)}
-        </Typography>,
-      );
-    } else if (line.startsWith("## ")) {
-      blocks.push(
-        <Typography key={index} variant="h2" sx={{ mt: 5, mb: 2 }}>
-          {line.slice(3)}
-        </Typography>,
-      );
-    } else if (line.startsWith("### ")) {
-      blocks.push(
-        <Typography key={index} variant="h3" sx={{ mt: 3.5, mb: 1.5 }}>
-          {line.slice(4)}
-        </Typography>,
-      );
-    } else if (line.startsWith("*") && line.endsWith("*") && line.length > 2) {
-      blocks.push(
-        <Typography
-          key={index}
-          variant="body1"
-          color="text.secondary"
-          sx={{
-            fontStyle: "italic",
-            borderLeft: "3px solid",
-            borderColor: "primary.main",
-            pl: 2,
-            my: 3,
-          }}
-        >
-          {line.slice(1, -1)}
-        </Typography>,
-      );
-    } else {
-      blocks.push(
-        <Typography
-          key={index}
-          variant="body1"
-          color="text.secondary"
-          sx={{ mb: 2.5 }}
-        >
-          {renderInline(line)}
-        </Typography>,
-      );
-    }
-  });
-  flushList();
-  return blocks;
-}
-
 export default function BlogDetail() {
-  const location = useLocation();
+  const { id } = useParams();
   const navigate = useNavigate();
-  const blog = location.state?.blog;
+  const blog = blogPosts.find((post) => String(post.id) === id);
 
-  // If no blog data is available, redirect to blogs page
+  // Unknown post id: go back to the blog list
   React.useEffect(() => {
     if (!blog) {
       navigate("/blogs");
@@ -201,14 +94,16 @@ export default function BlogDetail() {
           image={blog.image}
           alt={blog.title}
           sx={{
+            // Natural aspect ratio: wide product screenshots must not be cropped.
+            height: "auto",
             borderRadius: 3,
+            border: "1px solid",
+            borderColor: "divider",
             mb: 4,
-            aspectRatio: "16 / 9",
-            objectFit: "cover",
           }}
         />
 
-        {renderContent(blog.content, blog.title)}
+        {renderRichText(blog.content, blog.title)}
 
         <Box sx={{ textAlign: "center", mt: 6 }}>
           <Button
