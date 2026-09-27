@@ -17,7 +17,7 @@ export default function Blogs() {
   const navigate = useNavigate();
 
   const handleBlogClick = (blog) => {
-    navigate(`/blog/${blog.id}`);
+    navigate(`/blog/${blog.slug}`);
   };
 
   return (

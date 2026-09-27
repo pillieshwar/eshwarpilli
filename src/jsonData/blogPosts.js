@@ -1,8 +1,17 @@
 import { dpayScreens } from "../images/dpay";
 
+// "Doctor Payouts Without the Spreadsheets" -> "doctor-payouts-without-the-spreadsheets"
+export function slugify(title) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 // Blog posts, newest first. Shared by the blog list and the post page so posts
-// can be opened directly by URL (/blog/:id), not only by clicking a card.
-export const blogPosts = [
+// can be opened directly by URL. Each post's URL is /blog/<slug of its title>;
+// renaming a post changes its URL, but /blog/<id> links always redirect.
+const posts = [
   {
     id: 4,
     title: "Doctor Payouts Without the Spreadsheets",
@@ -247,3 +256,8 @@ Building an MVP is about learning, not perfection. Each iteration teaches you so
     `,
   },
 ];
+
+export const blogPosts = posts.map((post) => ({
+  ...post,
+  slug: slugify(post.title),
+}));

@@ -8,16 +8,19 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 export default function BlogDetail() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
-  const blog = blogPosts.find((post) => String(post.id) === id);
+  const blog = blogPosts.find((post) => post.slug === slug);
+  // Older links used the numeric id (/blog/4); send them to the title URL.
+  const legacy = !blog && blogPosts.find((post) => String(post.id) === slug);
 
-  // Unknown post id: go back to the blog list
   React.useEffect(() => {
-    if (!blog) {
-      navigate("/blogs");
+    if (legacy) {
+      navigate(`/blog/${legacy.slug}`, { replace: true });
+    } else if (!blog) {
+      navigate("/blogs", { replace: true });
     }
-  }, [blog, navigate]);
+  }, [blog, legacy, navigate]);
 
   if (!blog) {
     return null;
