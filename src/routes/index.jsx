@@ -1,36 +1,38 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Unstable_Grid2";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import EshwarNagPilli from "./../images/Eshwar_Nag_Pilli.png";
-import Terodoc_Statement_of_Purpose from "./../images/Terodoc_Statement_of_Purpose.png";
-import memoryvaultLogo from "./../images/memoryvaultLogo.png";
-import dpayLogo from "./../images/dpayLogo.png";
-import AMAZON from "./../images/amazon.png";
-import WSU from "./../images/wsu.png";
-import MIT from "./../images/mit.png";
-import DRDO from "./../images/drdo.png";
-import FILLERIMG from "./../images/fillerImg.png";
-import CYBAGE from "./../images/cybage.jpeg";
-import { Link } from "react-router-dom";
-import Badge from "@mui/material/Badge";
-import SALESTAT_LOGO from "./../images/SALESTAT_LOGO.png";
-import PLAYQUOTE_LOGO from "./../images/PlayQuote_Logo.png";
 import Chip from "@mui/material/Chip";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Badge from "@mui/material/Badge";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import { Link, useLocation } from "react-router-dom";
+import EshwarNagPilli from "./../images/Eshwar_Nag_Pilli.png";
+// Logos are trimmed and have transparent backgrounds so they scale evenly and cast shaped shadows.
+import terodocLogo from "./../images/logos/terodoc.png";
+import memoryvaultLogo from "./../images/logos/memoryvault.png";
+import dpayLogo from "./../images/logos/dpay.png";
+import AMAZON from "./../images/logos/amazon.png";
+import WSU from "./../images/logos/wsu.png";
+import MIT from "./../images/logos/mit.png";
+import DRDO from "./../images/logos/drdo.png";
+import blockcertLogo from "./../images/logos/blockcert.png";
+import CYBAGE from "./../images/logos/cybage.png";
+import SALESTAT_LOGO from "./../images/logos/salestat.png";
+import PLAYQUOTE_LOGO from "./../images/logos/playquote.png";
+import projectDetails from "./../jsonData/liveProjectData.json";
+import { ACCENT } from "../theme";
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
+const LiveDot = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     backgroundColor: "#44b700",
     color: "#44b700",
-    marginRight: 7,
     boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
     "&::after": {
       position: "absolute",
@@ -45,856 +47,617 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     },
   },
   "@keyframes ripple": {
-    "0%": {
-      transform: "scale(.8)",
-      opacity: 1,
-    },
-    "100%": {
-      transform: "scale(2.4)",
-      opacity: 0,
-    },
+    "0%": { transform: "scale(.8)", opacity: 1 },
+    "100%": { transform: "scale(2.4)", opacity: 0 },
   },
 }));
 
-const skills = [
-  "Python",
-  "Typescript",
-  "Java",
-  "ReactJs",
-  "SQL",
-  "Linux",
-  "Web Development",
-  "HTML/CSS",
-  "Javascript",
-  "Python",
-  "Typescript",
-
-  "Web Development",
-  "HTML/CSS",
-  "Javascript",
+const liveProjects = [
+  {
+    key: "dpay",
+    logo: dpayLogo,
+    name: "DPay",
+    url: "https://dpayhealth.com/",
+    summary:
+      "Automates doctor payouts for hospitals: fair, transparent payment calculations, real-time payout tracking, and simple reporting, so doctors can focus on patient care.",
+    detail: "/live-projects/dpay",
+  },
+  {
+    key: "memoryvault",
+    logo: memoryvaultLogo,
+    name: "MemoryVault",
+    url: "https://memoryvault.vercel.app/?id=O6326OhsyVQi-u9WFnonGZz9VPVfS6neaqZYW2wTLlw",
+    summary:
+      "Preserves photos, stories, and milestones on the blockchain, each linked to a QR code, so memories stay safe, timeless, and just a scan away.",
+    detail: "/live-projects/memoryvault",
+  },
 ];
 
-const StyledBadgeFail = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
-    backgroundColor: "red",
-    color: "red",
-    marginRight: 7,
-    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-    "&::after": {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      borderRadius: "50%",
-      animation: "ripple 1.2s infinite ease-in-out",
-      border: "1px solid currentColor",
-      content: '""',
-    },
+// Past projects are no longer online, so only PlayQuote keeps an external link.
+const experiments = [
+  {
+    key: "terodoc-statement-of-purpose",
+    logo: terodocLogo,
+    name: "Terodoc",
+    summary:
+      "A library of Statements of Purpose accepted by universities, with an interface for browsing and tailoring them to each program.",
+    detail: "/failed-projects/terodoc-statement-of-purpose",
   },
-  "@keyframes ripple": {
-    "0%": {
-      transform: "scale(.8)",
-      opacity: 1,
-    },
-    "100%": {
-      transform: "scale(2.4)",
-      opacity: 0,
-    },
+  {
+    key: "salestat",
+    logo: SALESTAT_LOGO,
+    name: "Salestat",
+    summary:
+      "Sales analytics for pharmaceutical companies, charting monthly and yearly sales by product and region.",
+    detail: "/failed-projects/salestat",
   },
-}));
-export default function Index() {
-  const infoStack = [
-    [
-      dpayLogo,
-      "DPay",
-      "https://eshwarpilli.vercel.app/",
-      "DPay is a web-based platform designed to make doctor payments seamless and accurate. Hospitals often struggle with manual calculations, delayed payouts, and complex billing processes. DPay solves this by automating payment management, ensuring fair and transparent calculations for every doctor. The platform also integrates with hospital, doctor, billing, and payment management modules, offering a complete solution for healthcare institutions. With features like real-time payout tracking, error-free billing, and simple reporting, DPay empowers hospitals to streamline operations while letting doctors focus on what matters most—patient care.",
-      "/live-projects/dpay",
-    ],
-    [
-      memoryvaultLogo,
-      "MemoryVault",
-      "https://memoryvault.vercel.app/?id=O6326OhsyVQi-u9WFnonGZz9VPVfS6neaqZYW2wTLlw",
-      "A platform that make memories last a lifetime. By combining QR codes with blockchain technology, we ensure your stories, photos, and milestones are permanently secured and always accessible. Whether it’s sharing moments with loved ones or preserving your personal journey, our mission is simple: to keep experiences safe, timeless, and just a scan away.",
-      "/live-projects/memoryvault",
-    ],
-  ];
+  {
+    key: "playquote",
+    logo: PLAYQUOTE_LOGO,
+    name: "PlayQuote",
+    url: "https://y5htjzc44h524qdggongomi4ret3cochxn37dmg62clyqilcszaa.arweave.net/x0805Fzh-65AZjOaZzEciSexOEe7d_Gw3tCXiCFilkA",
+    summary:
+      "A permaweb dapp that stores quotes on the Arweave blockchain, so they are kept forever and accessible anywhere.",
+    detail: "/failed-projects/playquote",
+  },
+  {
+    key: "blockcert",
+    logo: blockcertLogo,
+    name: "Blockcert",
+    summary:
+      "A decentralized application (dapp) for certifying other dapps, with permanent certificates stored on the Arweave permaweb.",
+    detail: "/failed-projects/blockcert",
+  },
+];
 
-  const steppingStones = [
-    [
-      Terodoc_Statement_of_Purpose,
-      "Terodoc",
-      "https://terodoc.com/",
-      "A platform that provides a comprehensive library of Statement of Purpose that have been approved and accepted by universities. It offers a user-friendly interface for accessing and customizing SOPs, ensuring that they meet the specific needs of each institution.",
-      "/live-projects/terodoc-statement-of-purpose",
+const skillGroups = [
+  {
+    name: "Languages",
+    skills: [
+      "TypeScript",
+      "Python",
+      "JavaScript",
+      "Java",
+      "HTML",
+      "CSS",
+      "C++",
     ],
-    [
-      SALESTAT_LOGO,
-      "Salestat",
-      "https://terodoc.com/",
-      "SaleStat is a software product which helps the medical company to analyse their sales in a graphical view and get a clear picture of their monthly and yearly sales status.",
-      "/failed-projects/salestat",
+  },
+  {
+    name: "Databases",
+    skills: ["DynamoDB", "PostgreSQL", "MySQL", "SQL Server", "MongoDB"],
+  },
+  {
+    name: "Cloud & frameworks",
+    skills: [
+      "AWS Lambda",
+      "API Gateway",
+      "S3",
+      "SNS",
+      "SQS",
+      "Route 53",
+      "Systems Manager",
+      "React",
+      "Flask",
+      "Spring Boot",
+      "JPA",
     ],
-    [
-      PLAYQUOTE_LOGO,
-      "PlayQuote",
-      "https://y5htjzc44h524qdggongomi4ret3cochxn37dmg62clyqilcszaa.arweave.net/x0805Fzh-65AZjOaZzEciSexOEe7d_Gw3tCXiCFilkA",
-      "PlayQuote is a permaweb dapp for storing Quotes on blockchain in a Decentralized way. Powered by Arweave, all quotes are forever stored and accessible anywhere.",
-      "/failed-projects/playquote",
-    ],
-    [
-      FILLERIMG,
-      "Blockcert",
-      "https://terodoc.com/",
-      "Blockchain based DAPP(Decentalized Application) for certifying other Dapps. A permanent certificate on the Arweave permaweb blockchain",
-      "/failed-projects/blockcert",
-    ],
-  ];
+  },
+  { name: "Tools", skills: ["Git", "Linux", "Postman", "VS Code"] },
+];
 
-  const workExperience = [
-    [
-      AMAZON,
-      "June 2025 - Present",
-      "Software Development Engineer - II",
-      "Amazon Inc.",
-      "Seattle, Washington.",
+const experience = [
+  {
+    logo: AMAZON,
+    org: "Amazon",
+    location: "Seattle, WA",
+    roles: [
+      {
+        title: "Software Development Engineer II",
+        dates: "Jun 2025 – Present",
+      },
+      {
+        title: "Software Development Engineer I",
+        dates: "Jan 2023 – Jun 2025",
+        highlights: [
+          "Led AMS case routing in GovCloud, fixing routing for 142 cases across 43 accounts and eliminating SLA violations.",
+          "Increased Census API burst-limit capacity by 82.2% by standardizing API key distribution.",
+          "Fixed ACL bypass vulnerabilities in the AMS Connector for ServiceNow, enabling Yokohama certification.",
+          "Led incident response for a Chronos SIR offboarding issue, protecting 177 accounts from security-monitoring gaps.",
+        ],
+      },
+      {
+        title: "Software Development Engineer Intern (AWS)",
+        dates: "May 2022 – Aug 2022",
+        highlights: [
+          "Built end-to-end automation that raises alarms during outages and notifies affected customers.",
+          "Designed an automated banner display architecture on Lambda, DynamoDB, S3, Route 53, SNS, and SQS.",
+        ],
+      },
     ],
-    [
-      AMAZON,
-      "January 2023 - June 2025",
-      "Software Development Engineer - I",
-      "Amazon Inc.",
-      "Seattle, Washington.",
+  },
+  {
+    logo: WSU,
+    org: "Washington State University",
+    location: "Pullman, WA",
+    roles: [
+      { title: "Teaching Assistant", dates: "Sep 2022 – Dec 2022" },
+      {
+        title: "Graduate Developer, Biological Systems Engineering",
+        dates: "Oct 2021 – May 2022",
+        highlights: [
+          "Built a Spring Boot and Hibernate tool that finds the closest analog of a county's vegetable production, improving performance by 21%.",
+        ],
+      },
+      {
+        title:
+          "Graduate Student Developer, Smart Grid Demonstration and Research Investigation Lab",
+        dates: "Feb 2021 – Oct 2021",
+        highlights: [
+          "Built a React, Flask, and PostgreSQL app that detects voltage and power fluctuations in Washington State's power grid.",
+        ],
+      },
     ],
-    [
-      WSU,
-      "September 2022 - December 2022",
-      "Teaching Assistant",
-      "Washington State University",
-      "Pullman, Washington.",
+  },
+  {
+    logo: CYBAGE,
+    org: "Cybage Software",
+    location: "Hyderabad, India",
+    roles: [
+      {
+        title: "Software Developer",
+        dates: "Jul 2018 – Dec 2020",
+        highlights: [
+          "Built role-based REST APIs (Spring Boot, JPA) and React screens for a fleet management portal, working across four teams.",
+        ],
+      },
     ],
-    [
-      AMAZON,
-      "May 2022 - August 2022",
-      "Software Development Engineer Intern",
-      "Amazon Inc. (AWS)",
-      "Seattle, Washington.",
-    ],
-    [
-      WSU,
-      "November 2021 - April 2022",
-      "Graduate Developer",
-      "Biological Systems Engineering (WSU)",
-      "Pullman, Washington.",
-    ],
-    [
-      WSU,
-      "January 2021 - October 2021",
-      "Graduate Student Developer",
-      "Smart Grid Demonstration and Research Investigation Lab (WSU)",
-      "Pullman, Washington.",
-    ],
-    [
-      CYBAGE,
-      "July 2018 - December 2020",
-      "Software Developer",
-      "Cybage Software",
-      "Hyderabad, India.",
-    ],
-    [
-      DRDO,
-      "June 2017 - May 2018",
-      "Research Intern",
-      "Defense Research and Development Organisation",
-      "Pune, India.",
-    ],
-  ];
+  },
+  {
+    logo: DRDO,
+    org: "Defence Research and Development Organisation",
+    location: "Pune, India",
+    roles: [{ title: "Research Intern", dates: "Jun 2017 – May 2018" }],
+  },
+];
 
-  const education = [
-    [
-      WSU,
-      "January 2021 - December 2022",
-      "Master of Science in Computer Science",
-      "Washington State University",
-      "Pullman, Washington.",
+const education = [
+  {
+    logo: WSU,
+    org: "Washington State University",
+    location: "Pullman, WA",
+    roles: [
+      {
+        title: "Master of Science in Computer Science",
+        dates: "Jan 2021 – Dec 2022",
+      },
     ],
-    [
-      MIT,
-      "August 2014 - June 2018",
-      "Bachelor of Engineering in Computer Science",
-      "Maharashtra Institute of Technology",
-      "Pune, India.",
+  },
+  {
+    logo: MIT,
+    org: "Maharashtra Institute of Technology",
+    location: "Pune, India",
+    roles: [
+      {
+        title: "Bachelor of Engineering in Computer Engineering",
+        dates: "Aug 2014 – May 2018",
+      },
     ],
-  ];
+  },
+];
 
+const sections = [
+  { id: "projects", label: "Projects" },
+  { id: "experiments", label: "Experiments" },
+  { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
+  { id: "education", label: "Education" },
+];
+
+const contactLinks = [
+  {
+    label: "GitHub",
+    href: "https://github.com/pillieshwar",
+    icon: <GitHubIcon />,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/pillieshwar",
+    icon: <LinkedInIcon />,
+  },
+  {
+    label: "Email",
+    href: "mailto:eshwarpilli@gmail.com",
+    icon: <EmailOutlinedIcon />,
+  },
+];
+
+function Section({ id, title, live, first, children }) {
+  return (
+    <Box
+      component="section"
+      id={id}
+      sx={{
+        scrollMarginTop: { xs: 112, sm: 120 },
+        py: { xs: 3, md: 4 },
+        borderTop: first ? "none" : "1px solid #eee",
+      }}
+    >
+      <Typography
+        variant="h2"
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: 1.5,
+          mb: 3,
+        }}
+      >
+        {live && <LiveDot variant="dot" overlap="circular" sx={{ mx: 0.5 }} />}
+        {title}
+      </Typography>
+      {children}
+    </Box>
+  );
+}
+
+// Share of the tile's inner area each logo should cover. Sizing by area instead of
+// fitting to the box keeps wide wordmarks from looking tiny next to square marks.
+const LOGO_AREA = 0.7;
+
+function logoBox(aspect) {
+  let w = Math.sqrt(LOGO_AREA * aspect);
+  let h = Math.sqrt(LOGO_AREA / aspect);
+  const overflow = Math.max(w, h, 1);
+  w /= overflow;
+  h /= overflow;
+  return { width: `${w * 100}%`, height: `${h * 100}%` };
+}
+
+function LogoTile({ src, alt }) {
+  const [aspect, setAspect] = React.useState(null);
   return (
     <Box
       sx={{
+        flexShrink: 0,
+        alignSelf: "flex-start", // keep the tile square instead of stretching to the text height
+        width: { xs: 56, sm: 72, md: 80 },
+        height: { xs: 56, sm: 72, md: 80 },
+        p: { xs: 0.75, sm: 1 },
         display: "flex",
-        height: { xs: "auto", md: "calc(100vh - 64px)" }, // Only fixed height on desktop
-        overflow: { xs: "visible", md: "hidden" }, // Allow overflow on mobile
-        flexDirection: { xs: "column", md: "row" }, // Stack on mobile, side-by-side on desktop
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
-      {/* Left Side - Static Profile Card */}
+      <Box
+        component="img"
+        src={src}
+        alt={alt}
+        onLoad={(e) =>
+          setAspect(
+            e.currentTarget.naturalWidth / e.currentTarget.naturalHeight,
+          )
+        }
+        sx={{
+          objectFit: "contain",
+          borderRadius: "12%",
+          // drop-shadow follows the logo's outline (backgrounds are transparent), unlike box-shadow
+          filter:
+            "drop-shadow(0 1px 1px rgba(0,0,0,0.12)) drop-shadow(0 4px 8px rgba(0,0,0,0.12))",
+          ...(aspect ? logoBox(aspect) : { width: "100%", height: "100%" }),
+        }}
+      />
+    </Box>
+  );
+}
+
+function LogoRow({ logo, alt, children }) {
+  return (
+    <Box sx={{ display: "flex", gap: { xs: 2, sm: 3 }, mb: 4 }}>
+      <LogoTile src={logo} alt={alt} />
+      <Box sx={{ minWidth: 0, flex: 1 }}>{children}</Box>
+    </Box>
+  );
+}
+
+function ProjectRow({ project }) {
+  const category = projectDetails[project.key]?.category;
+  const titleLinkProps = project.url
+    ? { href: project.url, target: "_blank", rel: "noopener noreferrer" }
+    : { component: Link, to: project.detail };
+  return (
+    <LogoRow logo={project.logo} alt={`${project.name} logo`}>
       <Box
         sx={{
-          width: { xs: "100%", md: "33.33%" },
-          minWidth: { md: "400px" },
-          height: { xs: "auto", md: "100%" },
-          position: { xs: "relative", md: "sticky" },
-          top: 0,
-          overflow: { xs: "visible", md: "hidden" },
-          display: { xs: "block", md: "flex" },
-          flexDirection: "column",
+          display: "flex",
+          alignItems: "center",
+          flexWrap: "wrap",
+          gap: 1,
+          mb: 1,
         }}
       >
-        <Card
-          sx={{
-            height: { xs: "auto", md: "100%" },
-            display: "flex",
-            flexDirection: "column",
-            borderRadius: { xs: 2, md: 0 },
-            boxShadow: { xs: 2, md: "none" },
-            border: { md: "none" },
-          }}
-        >
-          <CardMedia
-            sx={{
-              alignSelf: "center",
-              height: { xs: 300, sm: 350, md: 400 },
-              objectFit: "cover",
-              width: "80%",
-              mt: { xs: 2, sm: 3, md: 4 },
-            }}
-            image={EshwarNagPilli}
-            title="Eshwar Nag Pilli"
-          />
-          <CardContent sx={{ flexGrow: 1 }}>
-            <Typography
-              gutterBottom
-              variant="h6"
-              component="div"
-              sx={{
-                fontSize: { xs: "1.1rem", sm: "1.25rem", md: "1.5rem" },
-                fontWeight: 600,
-              }}
-            >
-              Eshwar Nag Pilli
-            </Typography>
-            <Typography
-              gutterBottom
-              variant="body2"
-              component="div"
-              sx={{
-                fontSize: { xs: "0.9rem", sm: "1rem" },
-                fontWeight: 500,
-                color: "#1976d2",
-                display: "flex",
-                alignItems: "center",
-                gap: { xs: 0.5, sm: 1 },
-                flexWrap: "wrap",
-              }}
-            >
-              Software Development Engineer II at
-              <Box
-                sx={{
-                  width: { xs: "48px", sm: "54px", md: "60px" },
-                  height: { xs: "48px", sm: "54px", md: "60px" },
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <img
-                  style={{
-                    marginTop: "6px",
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "contain",
-                    borderRadius: "4px",
-                  }}
-                  src={AMAZON}
-                  alt="Amazon logo"
-                />
-              </Box>
-            </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{
-                fontSize: { xs: "0.85rem", sm: "0.9rem" },
-                lineHeight: 1.6,
-              }}
-            >
-              SDE II at Amazon building reliable backend services on AWS. Strong
-              in data structures, algorithms, distributed systems, and web
-              development. I like simple designs, strong tests, and fast
-              feedback loops. Interested in startups and shipping small
-              improvements that add up to 0.1%. <br></br>
-              <br></br>I am also startup-curious. I enjoy validating small
-              problems, shipping lightweight prototypes, and learning from
-              users. My personal goal is simple: make something that improves
-              life by even 0.1%, then keep compounding.
-              <br></br>
-              <br></br>
-              <strong>Book time :</strong>{" "}
-              <a href="https://cal.com/eshwarpilli/30min">Schedule Call</a>{" "}
-              <OpenInNewIcon
-                sx={{
-                  color: "#1876D0",
-                  fontSize: { xs: "1rem", sm: "1.2rem" },
-                }}
-              />
-              <br></br>
-              <br></br>
-              <strong>Resume :</strong>{" "}
-              <a
-                href="/Eshwar_2025_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View Resume
-              </a>{" "}
-              <OpenInNewIcon
-                sx={{
-                  color: "#1876D0",
-                  fontSize: { xs: "1rem", sm: "1.2rem" },
-                }}
-              />
-            </Typography>
-          </CardContent>
-          <CardActions>
-            {/* <Button size="small">Share</Button>
-            <Button size="small">Learn More</Button> */}
-          </CardActions>
-        </Card>
-      </Box>
-
-      {/* Right Side - Scrollable Content */}
-      <Box
-        sx={{
-          flex: 1,
-          height: { xs: "auto", md: "100%" },
-          overflow: { xs: "visible", md: "auto" },
-          backgroundColor: { xs: "transparent", md: "#fafafa" },
-          borderLeft: { md: "1px solid #e0e0e0" },
-        }}
-      >
-        <Box sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
-          <Grid container spacing={2}>
-            <Grid xs={12} textAlign="center">
-              <Chip
-                sx={{ paddingLeft: 2.5 }}
-                variant="outlined"
-                icon={
-                  <StyledBadge
-                    overlap="circular"
-                    anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                    variant="dot"
-                  ></StyledBadge>
-                }
-                label=" LIVE PROJECTS"
-              />
-            </Grid>
-          </Grid>
-          {infoStack.map((data, index) => (
-            <Grid
-              container
-              spacing={{ xs: 2, sm: 3 }}
-              key={index}
-              sx={{ mb: 3 }}
-            >
-              <Grid
-                xs={12}
-                md={2}
-                sx={{
-                  display: "flex",
-                  justifyContent: { xs: "center", md: "flex-end" },
-                }}
-              >
-                <Box
-                  sx={{
-                    width: { xs: "120px", sm: "140px", md: "100%" },
-                    height: { xs: "120px", sm: "140px", md: "auto" },
-                    maxWidth: { md: "150px" },
-                  }}
-                >
-                  <Link
-                    to={data[2]}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ textDecoration: "none", color: "#000" }}
-                  >
-                    <img
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "contain",
-                        borderRadius: "8px",
-                      }}
-                      src={data[0]}
-                      alt="Find Statement of Purpose examples and get your statement of purpose reviewed"
-                    />
-                  </Link>
-                </Box>
-              </Grid>
-              <Grid xs={12} md={10}>
-                <Typography
-                  gutterBottom
-                  variant="h6"
-                  component="div"
-                  sx={{
-                    fontSize: { xs: "1.1rem", sm: "1.25rem", md: "1.5rem" },
-                    fontWeight: 600,
-                    mb: 1,
-                  }}
-                >
-                  <Link
-                    to={data[2]}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      textDecoration: "none",
-                      color: "#000",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                    }}
-                  >
-                    {data[1]}{" "}
-                    <OpenInNewIcon
-                      sx={{
-                        color: "#1876D0",
-                        fontSize: { xs: "1rem", sm: "1.2rem" },
-                      }}
-                    />
-                  </Link>
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{
-                    fontSize: { xs: "0.9rem", sm: "1rem" },
-                    lineHeight: 1.6,
-                    mb: 1,
-                  }}
-                >
-                  {data[3]}
-                </Typography>
-                <Link
-                  to={data[4]}
-                  style={{
-                    textDecoration: "none",
-                    color: "#1876D0",
-                    fontWeight: 500,
-                    fontSize: "0.9rem",
-                  }}
-                >
-                  View Project →
-                </Link>
-              </Grid>
-            </Grid>
-          ))}
-
-          {/* Divider between Live and Failed Projects */}
+        <Typography variant="h3">
           <Box
+            component="a"
+            {...titleLinkProps}
             sx={{
-              my: 4,
-              display: "flex",
+              color: "text.primary",
+              textDecoration: "none",
+              display: "inline-flex",
               alignItems: "center",
-              "&::before, &::after": {
-                content: '""',
-                flex: 1,
-                height: "1px",
-                backgroundColor: "#e0e0e0",
-              },
+              gap: 0.75,
+              "&:hover": { color: ACCENT },
             }}
           >
-            <Typography
-              variant="body2"
-              sx={{
-                px: 2,
-                color: "text.secondary",
-                fontSize: "0.875rem",
-                fontWeight: 500,
-                backgroundColor: "#fafafa",
-              }}
-            >
-              Learning Journey
-            </Typography>
-          </Box>
-
-          <Grid container spacing={2}>
-            <Grid xs={12} textAlign="center">
-              <Chip
-                sx={{ paddingLeft: 2.5 }}
-                variant="outlined"
-                icon={
-                  <StyledBadgeFail
-                    overlap="circular"
-                    anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                    variant="dot"
-                  ></StyledBadgeFail>
-                }
-                label=" FAILED PROJECTS"
+            {project.name}
+            {project.url && (
+              <OpenInNewIcon
+                sx={{ fontSize: "1em", color: ACCENT }}
+                aria-label="opens in a new tab"
               />
-            </Grid>
-          </Grid>
-          {steppingStones.map((data, index) => (
-            <Grid
-              container
-              spacing={{ xs: 2, sm: 3 }}
-              key={index}
-              sx={{ mb: 3 }}
-            >
-              <Grid
-                xs={12}
-                md={2}
-                sx={{
-                  display: "flex",
-                  justifyContent: { xs: "center", md: "flex-end" },
-                }}
-              >
-                <Box
-                  sx={{
-                    width: { xs: "120px", sm: "140px", md: "100%" },
-                    height: { xs: "120px", sm: "140px", md: "auto" },
-                    maxWidth: { md: "150px" },
-                  }}
-                >
-                  <Link
-                    to={data[2]}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ textDecoration: "none", color: "#000" }}
-                  >
-                    <img
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "contain",
-                        borderRadius: "8px",
-                      }}
-                      src={data[0]}
-                      alt="Find Statement of Purpose examples and get your statement of purpose reviewed"
-                    />
-                  </Link>
-                </Box>
-              </Grid>
-              <Grid xs={12} md={10}>
-                <Typography
-                  gutterBottom
-                  variant="h6"
-                  component="div"
-                  sx={{
-                    fontSize: { xs: "1.1rem", sm: "1.25rem", md: "1.5rem" },
-                    fontWeight: 600,
-                    mb: 1,
-                  }}
-                >
-                  <Link
-                    to={data[2]}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      textDecoration: "none",
-                      color: "#000",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                    }}
-                  >
-                    {data[1]}{" "}
-                    <OpenInNewIcon
-                      sx={{
-                        color: "#1876D0",
-                        fontSize: { xs: "1rem", sm: "1.2rem" },
-                      }}
-                    />
-                  </Link>
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{
-                    fontSize: { xs: "0.9rem", sm: "1rem" },
-                    lineHeight: 1.6,
-                    mb: 1,
-                  }}
-                >
-                  {data[3]}
-                </Typography>
-                <Link
-                  to={data[4]}
-                  style={{
-                    textDecoration: "none",
-                    color: "#1876D0",
-                    fontWeight: 500,
-                    fontSize: "0.9rem",
-                  }}
-                >
-                  View Project →
-                </Link>
-              </Grid>
-            </Grid>
-          ))}
-          <hr></hr>
-          <Grid container spacing={2}>
-            <Grid item xs={12} textAlign="center">
-              <Typography
-                sx={{
-                  fontSize: { xs: 18, sm: 20 },
-                  fontWeight: 600,
-                  mb: 2,
-                }}
-                gutterBottom
-                variant="button"
-                component="div"
-              >
-                Skills
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
+            )}
+          </Box>
+        </Typography>
+        {category && <Chip label={category} size="small" />}
+      </Box>
+      <Typography variant="body1" color="text.secondary" sx={{ mb: 1 }}>
+        {project.summary}
+      </Typography>
+      <Box
+        component={Link}
+        to={project.detail}
+        sx={{
+          typography: "body2",
+          color: ACCENT,
+          fontWeight: 600,
+          textDecoration: "none",
+          "&:hover": { textDecoration: "underline" },
+        }}
+      >
+        View details →
+      </Box>
+    </LogoRow>
+  );
+}
+
+function TimelineEntry({ entry }) {
+  const grouped = entry.roles.length > 1;
+  return (
+    <LogoRow logo={entry.logo} alt={`${entry.org} logo`}>
+      <Typography variant="h3">{entry.org}</Typography>
+      <Typography
+        variant="caption"
+        component="p"
+        color="text.secondary"
+        sx={{ mb: 1.5 }}
+      >
+        {entry.location}
+      </Typography>
+      <Box
+        sx={{
+          borderLeft: grouped ? "2px solid #e0e0e0" : "none",
+          pl: grouped ? 2 : 0,
+        }}
+      >
+        {entry.roles.map((role) => (
+          <Box key={role.title} sx={{ mb: 2, "&:last-child": { mb: 0 } }}>
+            <Typography variant="subtitle1">{role.title}</Typography>
+            <Typography variant="caption" component="p" color="text.secondary">
+              {role.dates}
+            </Typography>
+            {role.highlights && (
               <Box
+                component="ul"
                 sx={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: { xs: 1, sm: 1.5 },
-                  justifyContent: { xs: "center", sm: "flex-start" },
+                  m: 0,
+                  mt: 1,
+                  pl: 2.5,
+                  typography: "body2",
+                  color: "text.secondary",
                 }}
               >
-                {skills.map((skill, index) => (
-                  <Chip
-                    key={index}
-                    sx={{
-                      m: { xs: 0.5, sm: 1 },
-                      fontSize: { xs: "0.75rem", sm: "0.875rem" },
-                      height: { xs: 28, sm: 32 },
-                    }}
-                    label={skill}
-                    size="medium"
-                  />
+                {role.highlights.map((h) => (
+                  <li key={h}>{h}</li>
                 ))}
               </Box>
-            </Grid>
-          </Grid>
-          {/* <hr></hr>
-          <Grid container>
-            <Grid item xs={12} textAlign="center">
-              <Typography
-                sx={{ fontSize: 20 }}
-                gutterBottom
-                variant="button"
-                component="div"
-              >
-                Blogs
-              </Typography>
-            </Grid>
-            <Grid item xs={12}></Grid>
-          </Grid> */}
-          <hr></hr>
-          <Grid container spacing={2}>
-            <Grid item xs={12} textAlign="center">
-              <Typography
-                sx={{
-                  fontSize: { xs: 18, sm: 20 },
-                  fontWeight: 600,
-                  mb: 2,
-                }}
-                gutterBottom
-                variant="button"
-                component="div"
-              >
-                Work Experience
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              {workExperience.map((data, index) => (
-                <Grid
-                  container
-                  spacing={{ xs: 2, sm: 3 }}
-                  key={index}
-                  sx={{ mb: 3 }}
-                >
-                  <Grid
-                    xs={12}
-                    md={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: { xs: "center", md: "flex-end" },
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        width: { xs: "80px", sm: "100px", md: "100%" },
-                        height: { xs: "80px", sm: "100px", md: "auto" },
-                        maxWidth: { md: "120px" },
-                      }}
-                    >
-                      <img
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "contain",
-                          borderRadius: "8px",
-                        }}
-                        src={data[0]}
-                        alt="Company logo"
-                      />
-                    </Box>
-                  </Grid>
+            )}
+          </Box>
+        ))}
+      </Box>
+    </LogoRow>
+  );
+}
 
-                  <Grid xs={12} md={10}>
-                    <Typography
-                      gutterBottom
-                      variant="body2"
-                      color="text.secondary"
-                      sx={{
-                        fontSize: { xs: "0.8rem", sm: "0.9rem" },
-                        fontWeight: 500,
-                      }}
-                    >
-                      {data[1]}
-                    </Typography>
-                    <Typography
-                      gutterBottom
-                      variant="h6"
-                      component="div"
-                      sx={{
-                        fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" },
-                        fontWeight: 600,
-                        mb: 0.5,
-                      }}
-                    >
-                      {data[2]}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        fontSize: { xs: "0.9rem", sm: "1rem" },
-                        fontWeight: 500,
-                        mb: 0.5,
-                      }}
-                    >
-                      {data[3]}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      sx={{
-                        fontSize: { xs: "0.8rem", sm: "0.9rem" },
-                      }}
-                    >
-                      {data[4]}
-                    </Typography>
-                  </Grid>
-                </Grid>
-              ))}
-            </Grid>
-          </Grid>
-          <hr></hr>
-          <Grid container spacing={2}>
-            <Grid item xs={12} textAlign="center">
-              <Typography
-                sx={{
-                  fontSize: { xs: 18, sm: 20 },
-                  fontWeight: 600,
-                  mb: 2,
-                }}
-                gutterBottom
-                variant="button"
-                component="div"
-              >
-                Education
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              {education.map((data, index) => (
-                <Grid
-                  container
-                  spacing={{ xs: 2, sm: 3 }}
-                  key={index}
-                  sx={{ mb: 3 }}
-                >
-                  <Grid
-                    xs={12}
-                    md={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: { xs: "center", md: "flex-end" },
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        width: { xs: "80px", sm: "100px", md: "100%" },
-                        height: { xs: "80px", sm: "100px", md: "auto" },
-                        maxWidth: { md: "120px" },
-                      }}
-                    >
-                      <img
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "contain",
-                          borderRadius: "8px",
-                        }}
-                        src={data[0]}
-                        alt="University logo"
-                      />
-                    </Box>
-                  </Grid>
+function Profile() {
+  return (
+    <Box sx={{ p: { xs: 2, sm: 3 } }}>
+      <Box
+        component="img"
+        src={EshwarNagPilli}
+        alt="Eshwar Nag Pilli"
+        sx={{
+          width: { xs: 180, sm: 220 },
+          aspectRatio: "1 / 1",
+          objectFit: "cover",
+          mx: "auto",
+          mb: 3,
+        }}
+      />
+      <Typography variant="h1">Eshwar Nag Pilli</Typography>
+      <Typography variant="subtitle2" sx={{ color: ACCENT, mt: 0.5, mb: 2.5 }}>
+        Software Development Engineer II at{" "}
+        <Box
+          component="img"
+          src={AMAZON}
+          alt="Amazon"
+          sx={{
+            display: "inline-block",
+            height: 16,
+            width: "auto",
+            verticalAlign: "-4px",
+            ml: 0.5,
+          }}
+        />
+      </Typography>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5, mb: 2 }}>
+        <Button
+          variant="contained"
+          disableElevation
+          startIcon={<CalendarMonthIcon />}
+          href="https://cal.com/eshwarpilli/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Schedule a call
+        </Button>
+        <Button
+          variant="outlined"
+          startIcon={<DescriptionOutlinedIcon />}
+          href="/Eshwar_2025_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View resume
+        </Button>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "center", gap: 1, mb: 3 }}>
+        {contactLinks.map((c) => (
+          <IconButton
+            key={c.label}
+            href={c.href}
+            target={c.href.startsWith("mailto:") ? undefined : "_blank"}
+            rel="noopener noreferrer"
+            aria-label={c.label}
+            sx={{ color: "text.secondary", "&:hover": { color: ACCENT } }}
+          >
+            {c.icon}
+          </IconButton>
+        ))}
+      </Box>
+      <Typography color="text.secondary" variant="body2" sx={{ mb: 1.5 }}>
+        SDE II at Amazon building reliable backend services on AWS. Strong in
+        data structures, algorithms, distributed systems, and web development. I
+        like simple designs, strong tests, and fast feedback loops.
+      </Typography>
+      <Typography color="text.secondary" variant="body2">
+        I am also startup-curious. I enjoy validating small problems, shipping
+        lightweight prototypes, and learning from users. My personal goal is
+        simple: make something that improves life by even 0.1%, then keep
+        compounding.
+      </Typography>
+    </Box>
+  );
+}
 
-                  <Grid xs={12} md={10}>
-                    <Typography
-                      gutterBottom
-                      variant="body2"
-                      color="text.secondary"
-                      sx={{
-                        fontSize: { xs: "0.8rem", sm: "0.9rem" },
-                        fontWeight: 500,
-                      }}
-                    >
-                      {data[1]}
-                    </Typography>
-                    <Typography
-                      gutterBottom
-                      variant="h6"
-                      component="div"
-                      sx={{
-                        fontSize: { xs: "1rem", sm: "1.1rem", md: "1.25rem" },
-                        fontWeight: 600,
-                        mb: 0.5,
-                      }}
-                    >
-                      {data[2]}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        fontSize: { xs: "0.9rem", sm: "1rem" },
-                        fontWeight: 500,
-                        mb: 0.5,
-                      }}
-                    >
-                      {data[3]}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      sx={{
-                        fontSize: { xs: "0.8rem", sm: "0.9rem" },
-                      }}
-                    >
-                      {data[4]}
-                    </Typography>
-                  </Grid>
-                </Grid>
-              ))}
-            </Grid>
-          </Grid>
-        </Box>
+function SectionNav() {
+  return (
+    <Box
+      component="nav"
+      aria-label="Page sections"
+      sx={{
+        position: "sticky",
+        top: { xs: 56, sm: 64 },
+        zIndex: 2,
+        bgcolor: "#fff",
+        borderBottom: "1px solid #eee",
+        display: "flex",
+        gap: 0.5,
+        overflowX: "auto",
+        py: 1,
+        scrollbarWidth: "none",
+        "&::-webkit-scrollbar": { display: "none" },
+      }}
+    >
+      {sections.map((s) => (
+        <Button
+          key={s.id}
+          href={`#${s.id}`}
+          size="small"
+          sx={{
+            color: "text.secondary",
+            flexShrink: 0,
+            minWidth: 0,
+            px: 1.5,
+          }}
+        >
+          {s.label}
+        </Button>
+      ))}
+    </Box>
+  );
+}
+
+export default function Index() {
+  const { hash } = useLocation();
+
+  // Router navigation doesn't scroll to #anchors, e.g. "All projects" -> /#experiments.
+  React.useEffect(() => {
+    if (hash) document.getElementById(hash.slice(1))?.scrollIntoView();
+  }, [hash]);
+
+  return (
+    <Box sx={{ display: { md: "flex" }, alignItems: "flex-start" }}>
+      <Box
+        component="aside"
+        sx={{
+          width: { md: "25%" },
+          minWidth: { md: 300 },
+          flexShrink: 0,
+          position: { md: "sticky" },
+          top: { md: 64 },
+          maxHeight: { md: "calc(100vh - 64px)" },
+          overflowY: { md: "auto" },
+          borderRight: { md: "1px solid #e0e0e0" },
+          borderBottom: { xs: "1px solid #e0e0e0", md: "none" },
+        }}
+      >
+        <Profile />
+      </Box>
+
+      <Box sx={{ flex: 1, minWidth: 0, px: { xs: 1, sm: 3, md: 5 } }}>
+        <SectionNav />
+
+        <Section id="projects" title="Live projects" live first>
+          {liveProjects.map((p) => (
+            <ProjectRow key={p.key} project={p} />
+          ))}
+        </Section>
+
+        <Section id="experiments" title="Past experiments">
+          {experiments.map((p) => (
+            <ProjectRow key={p.key} project={p} />
+          ))}
+        </Section>
+
+        <Section id="skills" title="Skills">
+          {skillGroups.map((g) => (
+            <Box key={g.name} sx={{ mb: 2.5 }}>
+              <Typography
+                variant="overline"
+                color="text.secondary"
+                sx={{ display: "block", mb: 1 }}
+              >
+                {g.name}
+              </Typography>
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+                {g.skills.map((skill) => (
+                  <Chip key={skill} label={skill} />
+                ))}
+              </Box>
+            </Box>
+          ))}
+        </Section>
+
+        <Section id="experience" title="Experience">
+          {experience.map((e) => (
+            <TimelineEntry key={e.org} entry={e} />
+          ))}
+        </Section>
+
+        <Section id="education" title="Education">
+          {education.map((e) => (
+            <TimelineEntry key={e.org} entry={e} />
+          ))}
+        </Section>
       </Box>
     </Box>
   );

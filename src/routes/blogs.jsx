@@ -75,7 +75,7 @@ Building scalable backend services is an ongoing journey. The technologies and p
     description:
       "Exploring the fundamental concepts and patterns that make distributed systems reliable, consistent, and performant in real-world scenarios.",
     image:
-      "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=500&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=300&fit=crop",
     author: "Eshwar Nag Pilli",
     date: "December 10, 2024",
     readTime: "12 min read",
@@ -192,29 +192,13 @@ export default function Blogs() {
     <Box sx={{ flexGrow: 1, maxWidth: "100%", overflow: "hidden" }}>
       {/* Header */}
       <Box sx={{ textAlign: "center", mb: 4, mt: 2 }}>
-        <Typography
-          variant="h3"
-          component="h1"
-          sx={{
-            fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
-            fontWeight: 700,
-            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-            backgroundClip: "text",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            mb: 2,
-          }}
-        >
+        <Typography variant="h1" sx={{ mb: 1.5 }}>
           Blog
         </Typography>
         <Typography
-          variant="h6"
-          sx={{
-            color: "text.secondary",
-            fontSize: { xs: "1rem", sm: "1.1rem" },
-            maxWidth: "600px",
-            mx: "auto",
-          }}
+          variant="body1"
+          color="text.secondary"
+          sx={{ maxWidth: 600, mx: "auto" }}
         >
           Thoughts on software engineering, distributed systems, and building
           products that matter
@@ -256,19 +240,15 @@ export default function Blogs() {
                   size="small"
                   sx={{
                     mb: 2,
-                    backgroundColor: "rgba(102, 126, 234, 0.1)",
-                    color: "#667eea",
-                    fontWeight: 500,
+                    backgroundColor: "rgba(25, 118, 210, 0.1)",
+                    color: "primary.main",
                   }}
                 />
                 <Typography
-                  variant="h6"
+                  variant="h3"
                   component="h2"
                   sx={{
-                    fontSize: { xs: "1.1rem", sm: "1.2rem" },
-                    fontWeight: 600,
-                    mb: 2,
-                    lineHeight: 1.4,
+                    mb: 1.5,
                     display: "-webkit-box",
                     WebkitLineClamp: 2,
                     WebkitBoxOrient: "vertical",
@@ -282,7 +262,6 @@ export default function Blogs() {
                   color="text.secondary"
                   sx={{
                     mb: 3,
-                    lineHeight: 1.6,
                     display: "-webkit-box",
                     WebkitLineClamp: 3,
                     WebkitBoxOrient: "vertical",
