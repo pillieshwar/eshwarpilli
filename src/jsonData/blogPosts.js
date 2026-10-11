@@ -13,6 +13,90 @@ export function slugify(title) {
 // renaming a post changes its URL, but /blog/<id> links always redirect.
 const posts = [
   {
+    id: 5,
+    title: "How Lime Is Using AI to Turn Scooters and E-Bikes Into an Intelligent Transportation Network",
+    description:
+      "AI is the decision layer connecting Lime's riders, vehicles, operations teams, and cities \u2014 from demand forecasting and fleet repositioning to on-vehicle computer vision.",
+    image:
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Lime%20scooters.jpg?width=1024",
+    author: "Eshwar Nag Pilli",
+    date: "October 10, 2026",
+    readTime: "6 min read",
+    category: "AI",
+    content: `
+When most people think about Lime, they think about an app, a QR code, and a scooter or e-bike waiting on the street. But that simple experience hides a much more complex system. Lime has to predict where riders will need vehicles, keep hundreds of thousands of devices charged and repaired, enforce different city rules, prevent payment fraud, manage parking, and still make each trip economically viable.
+
+That is why AI is not a side feature at Lime. It is becoming the decision layer connecting riders, vehicles, operations teams, and cities.
+
+### AI begins before a rider opens the app
+
+A shared-mobility fleet only works if vehicles are available in the right place at the right time. Too many vehicles in one neighborhood waste capital and create clutter. Too few mean lost rides. Lime says it uses machine learning to predict rider demand and dynamically deploy its fleet. Its Supply App also uses ML to prioritize and assign operational tasks such as dispatch sequencing, charging, maintenance scheduling, fleet repositioning, and parts allocation.[1]
+
+This is the invisible side of the product. A rider sees a nearby bike on a map; underneath, models and field operations are deciding which vehicles should be moved, charged, inspected, or repaired. Lime’s job postings describe a dedicated Supply machine-learning function whose deployment and rebalancing work influences millions of rides.
+
+In Q2 2026, Lime reported an average operational fleet of 407,707 vehicles, up 22% year over year, and five million monthly active users.[5] At that scale, small forecasting or maintenance improvements can affect many trips.
+
+### Lime Vision brings AI onto the vehicle
+
+The most visible example is Lime Vision, an in-house computer-vision platform first announced in 2022. The original retrofit placed a waterproof unit on the scooter’s neck containing a camera, AI chip, and processor. Instead of sending video to a distant server and waiting, the model runs on the device and can classify the riding surface in under one second.[4]
+
+That edge-computing design is important. Lime Vision can distinguish among a sidewalk, road, and bike lane while the scooter is moving. In markets where sidewalk riding is prohibited, the scooter can emit an audible warning and the app can send a real-time notification. The warning repeats until the rider leaves the sidewalk or ends the trip.[2]
+
+Lime previously tested a different approach in San Jose in 2020. That system combined speed and accelerometer data with a statistical AI model. Lime said it could detect sidewalk riding with up to 95% accuracy, but riders received warnings after the trip.[11] Lime Vision moves the intervention into the ride itself.
+
+Seattle is the clearest sign that this technology is moving from pilot to scale. Lime’s 2026 plan called for Vision on half of the city’s roughly 7,000 standing scooters by June 1 and on the full scooter fleet by year-end. Lime also plans to extend the system to e-bikes.[2] Early Nashville testing averaged 4.5 sidewalk alerts per trip, and Lime reported 16% less sidewalk riding on streets with bike lanes.[12]
+
+### Computer vision also tackles parking
+
+Parking is one of micromobility’s hardest city-level problems. A badly parked vehicle can block a sidewalk or accessibility route, so Lime asks riders to photograph the vehicle at the end of a trip.
+
+Lime has described an in-house computer-vision model that scores those photos, supported by an operations feedback loop. It has also deployed third-party AI and augmented-reality tools that can give riders real-time parking feedback. In Washington, D.C., Lime’s $17 million “Keeping DC Moving” program includes this AI-assisted parking workflow, paired with manual review and escalating enforcement for repeat violations.[3]
+
+Hardware is improving the same loop. Newer Gen 4 and LimeGlider vehicles can locate themselves to roughly 1.5 meters, compared with about 12 meters previously. Better positioning helps the system determine whether a vehicle is inside a designated parking bay instead of merely close to one.
+
+### Pricing, fraud, and the business engine
+
+Lime also uses machine learning where safety meets economics. Public job descriptions for its pricing team say production models make real-time pricing decisions under uncertainty. Riders may see this through dynamic “Prime Time” pricing. In March 2026, Lime also launched LimePrime, a subscription product that changes the economics for frequent riders.
+
+Fraud is another production use case. Lime’s public filing says AI and ML help detect stolen payment credentials and unauthorized vehicle use.[1] This matters because every fraudulent unlock can create payment loss, vehicle damage, or a safety risk.
+
+Together, demand forecasting, operational scheduling, pricing, and fraud detection form a closed loop: predict demand, position supply, price the ride, complete the trip, verify parking, and learn from the outcome.
+
+### AI also appears inside the company
+
+Lime’s engineering team has published work beyond vehicles. In 2024 it described an internal retrieval-augmented generation chatbot, built around a “Refine, Retrieve, Rebuttal” flow and deployed through Slack.[9] Earlier work used LightGBM and SHAP across roughly 100 features to classify trips as commute or leisure. These projects show AI being used both for employee productivity and for understanding rider behavior.
+
+### The roadmap is expansion, not autonomy
+
+The public roadmap points toward more deployment of proven systems rather than self-driving scooters. Lime Vision is expanding from pilots to city-scale scooter fleets and is planned for e-bikes. New vehicle hardware improves location accuracy. The seated LimeGlider is expanding in cities including Portland, Orlando, Dallas, and Los Angeles. Lime also acquired Neuron Mobility’s Canadian operations in July 2026, adding 12 cities and regions.[6][7]
+
+The company now has the capital to push that expansion. Lime went public on July 1, 2026, at $25 per share, at roughly a $1.6 billion valuation, and later said it had repaid all outstanding long-term debt.[5][10] Q2 revenue reached $304 million, up 24% year over year, while adjusted EBITDA was $84 million, a 28% margin.[5]
+
+There is also a climate objective behind the operating model. Lime is targeting net-zero emissions by 2030 under an SBTi-validated goal and says it has already cut carbon intensity 81.4% versus its 2019 baseline.[8] Smarter deployment, longer-lasting vehicles, more efficient charging, and better fleet utilization all support that direction.
+
+The important takeaway is not that Lime uses AI. Many companies do. The important point is where Lime uses it: in decisions that repeat across every city, every vehicle, and every ride. That is what makes AI integral to the business rather than a marketing layer.
+
+---
+
+## Sources
+
+1. [Lime S-1 filing (Neutron Holdings)](https://www.stocktitan.net/sec-filings/LIME/s-1-a-neutron-holdings-inc-amends-ipo-registration-statement-0472870f0588.html)
+2. [GeekWire: Lime Vision Seattle rollout](https://www.geekwire.com/2026/sidewalk-scooter-riders-beware-ai-powered-lime-vision-will-soon-call-you-out/)
+3. [Lime: Keeping DC Moving ($17M program)](https://www.li.me/blog/keeping-dc-moving-lime-invests-17-million-in-capitals-thriving-micromobility-program)
+4. [Lime Vision 2022 announcement](https://www.pws.io/lime-built-its-own-camera-based-sidewalk-detection-technology/amp)
+5. [Karmactive: Lime Q2 2026 earnings](https://karmactive.com/lime-posts-295m-profit-304m-revenue-174m-ipo-amid-rising-costs/)
+6. [Zag Daily: Lime pilots new vehicle designs](https://zagdaily.com/tech/lime-pilots-two-new-vehicle-designs/)
+7. [Barchart: Lime acquires Neuron Mobility Canada](https://www.barchart.com/story/news/3145768/lime-to-take-over-some-e-scooter-operations-in-canada-from-neuron-amid-acquisition)
+8. [Lime: 81.4% carbon reduction on the road to net zero](https://www.li.me/blog/lime-achieves-an-81-4-carbon-reduction-on-the-road-to-net-zero)
+9. [Lime Eng: Refine, Retrieve, Rebuttal (RAG flow)](https://medium.com/lime-eng/refine-retrieve-rebuttal-limes-rag-flow-90fd4d13c1a4)
+10. [TechCrunch: Lime begins life as a public company](https://techcrunch.com/2026/07/01/lime-begins-life-as-a-public-company-after-years-of-uncertainty/)
+11. [Digital Trends: Lime's 2020 sidewalk-detection pilot](https://www.digitaltrends.com/outdoors/limes-newest-scooter-aims-to-stop-you-from-riding-on-the-sidewalk/)
+12. [CitizenPortal: Nashville WeGo pilot metrics](https://citizenportal.ai/articles/7240852/Tennessee/Lime-reports-large-ridership-gains-tests-beacons-and-camera-AI-in-WeGo-pilot)
+
+*Cover photo: [Tiia Monto](https://commons.wikimedia.org/wiki/File:Lime_scooters.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).*
+    `,
+  },
+  {
     id: 4,
     title: "Doctor Payouts Without the Spreadsheets",
     description:
